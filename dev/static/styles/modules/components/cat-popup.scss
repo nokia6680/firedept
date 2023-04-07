@@ -1,0 +1,425 @@
+.cat-popup {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    @include flex-setting(column, flex-start, center);
+    display: none;
+    z-index: 999;
+
+    &.is-active {
+        display: flex;
+    }
+
+    &__wrapper {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: block;
+
+        background-color: $white;
+        padding-top: toRem(48);
+    }
+
+    &__closer {
+        @include flex-setting(column, center, center);
+        width: toRem(18);
+        height: toRem(18);
+        border: none;
+        padding: 0;
+        background-color: transparent;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url("data:image/svg+xml,%3Csvg width='11' height='11' viewBox='0 0 11 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L10 10.2936' stroke='%23BEBEBE' stroke-width='2' stroke-miterlimit='10'/%3E%3Cpath d='M10 1L1 10.2936' stroke='%23BEBEBE' stroke-width='2' stroke-miterlimit='10'/%3E%3C/svg%3E");
+        position: absolute;
+        top: toRem(18);
+        right: toRem(18);
+        cursor: pointer;
+        z-index: 12;
+        transition: 0.2s $cubic;
+
+        &:active {
+            transition: 0.2s $cubic;
+            background-image: url("data:image/svg+xml,%3Csvg width='11' height='11' viewBox='0 0 11 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L10 10.2936' stroke='%23C97A7C' stroke-width='2' stroke-miterlimit='10'/%3E%3Cpath d='M10 1L1 10.2936' stroke='%23C97A7C' stroke-width='2' stroke-miterlimit='10'/%3E%3C/svg%3E");
+        }
+    }
+
+    &__return {
+        position: absolute;
+        top: toRem(18);
+        left: toRem(18);
+        @include flex-setting(column, center, center);
+        padding: 0;
+        border: none;
+        background-color: transparent;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url("data:image/svg+xml,%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 11L2 5.85714C3.66667 4.2381 7 1 7 1' stroke='%23D6D6D6' stroke-width='2'/%3E%3C/svg%3E");
+        width: toRem(18);
+        height: toRem(18);
+        cursor: pointer;
+        z-index: 12;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.2s $cubic;
+
+        &.visible {
+            opacity: 1;
+            pointer-events: all;
+            transition: 0.2s $cubic;
+        }
+    }
+
+    &__title {
+        @include font-setting($primary-font, toRem(16), toRem(19), 500, $black);
+        padding-bottom: toRem(12);
+        padding-left: 6.25%;
+        border-bottom: 1px solid rgba(198, 5, 4, 0.6);
+    }
+
+    &__list {
+        width: 100%;
+        max-height: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+        overflow-y: auto;
+    }
+
+    &__item {
+        width: 100%;
+        @include flex-setting(row, space-between, center);
+        padding: toRem(8) 6.25%;
+        background-color: $white;
+        border-bottom: 1px solid rgba(198, 5, 4, 0.2);
+        pointer-events: all;
+        outline: none;
+
+        &[open] {
+            .cat-popup__inner {
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+    }
+
+    &__name {
+        position: relative;
+        width: 100%;
+        outline: none;
+        @include flex-setting(row, space-between, center);
+
+        span:first-of-type {
+            @include font-setting($primary-font, toRem(12), 1.4, 300, $black);
+            @include fluidFontSize(0.75rem, 1.125rem, 20rem, 48rem, 0.75rem);
+            text-align: left;
+        }
+
+        &:active {
+            color: $red;
+            transition: 0.2s $cubic;
+
+            & > .cat-popup__arrow {
+                transition: 0.2s $cubic;
+                background-image: url("data:image/svg+xml,%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6.14286C4.33333 7.7619 1 11 1 11' stroke='%23C60504' stroke-width='2'/%3E%3C/svg%3E");
+            }
+        }
+
+        &::-webkit-details-marker,
+        &::marker {
+            display: none;
+        }
+    }
+
+    &__inner {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        right: -100%;
+        top: 0;
+        background-color: $white;
+        z-index: 11;
+        padding-top: toRem(48);
+
+        &-title {
+            @include font-setting($primary-font, toRem(16), toRem(19), 500, $black);
+            padding-bottom: toRem(12);
+            padding-left: 6.25%;
+            border-bottom: 1px solid rgba(198, 5, 4, 0.8);
+        }
+
+        &-list {
+            width: 100%;
+            max-height: 100%;
+            @include flex-setting(column, flex-start, flex-start);
+            overflow-y: auto;
+        }
+
+        &-item {
+            width: 100%;
+            @include flex-setting(column, center, center);
+        }
+
+        &-link {
+            width: 100%;
+            position: relative;
+            @include flex-setting(row, space-between, center);
+            padding: toRem(8) 6.25%;
+            background-color: $white;
+            border-bottom: 1px solid #E9E9E9;
+            text-decoration: none;
+
+            @include font-setting($primary-font, toRem(12), 1.4, 300, $black);
+            @include fluidFontSize(0.75rem, 1.125rem, 20rem, 48rem, 0.75rem);
+            text-align: left;
+
+            transition: 0.2s $cubic;
+
+            &:active {
+                color: $red;
+                transition: 0.3s $cubic;
+            }
+        }
+    }
+
+    &__arrow {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        @include flex-setting(column, center, center);
+
+        width: toRem(8);
+        height: toRem(12);
+
+        background-image: url("data:image/svg+xml,%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6.14286C4.33333 7.7619 1 11 1 11' stroke='%23D6D6D6' stroke-width='2'/%3E%3C/svg%3E");
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        transition: 0.3s $cubic;
+    }
+}
+
+@include min-screen(768px) {
+    .cat-popup {
+        background-color: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+
+        &__wrapper {
+            max-width: toRem(576);
+            height: calc((var(--vh, 1vh) * 80));
+            padding-top: toRem(18);
+            box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        &__closer {
+            width: toRem(24);
+            height: toRem(24);
+        }
+
+        &__return {
+            width: toRem(24);
+            height: toRem(24);
+        }
+
+        &__title {
+            width: 100%;
+            text-align: center;
+            font-size: toRem(24);
+            line-height: toRem(24);
+            padding-bottom: toRem(18);
+            padding-left: 0;
+        }
+
+        &__list {
+            width: 100%;
+            max-height: 100%;
+            @include flex-setting(column, flex-start, flex-start);
+            overflow-y: auto;
+        }
+
+        &__item {
+            padding-top: toRem(12);
+            padding-bottom: toRem(12);
+
+            &[open] {
+                .cat-popup__inner {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+            }
+        }
+
+        &__inner {
+            height: calc((var(--vh, 1vh) * 80));
+            bottom: 0;
+            padding-top: toRem(18);
+
+            &-list {
+                height: 100%;
+                background-color: $white;
+            }
+
+            &-title {
+                width: 100%;
+                text-align: center;
+                font-size: toRem(24);
+                line-height: toRem(24);
+                padding-bottom: toRem(18);
+                padding-left: 0;
+            }
+
+            &-link {
+                padding-top: toRem(12);
+                padding-bottom: toRem(12);
+            }
+        }
+    }
+}
+
+@include min-screen(1366px) {
+    .cat-popup {
+        &__wrapper {
+            max-width: toRem(1180);
+            justify-content: flex-start;
+            align-items: flex-start;
+            overflow: hidden;
+        }
+
+        &__closer {
+            &:hover {
+                transition: 0.2s $cubic;
+                background-image: url("data:image/svg+xml,%3Csvg width='11' height='11' viewBox='0 0 11 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L10 10.2936' stroke='%23C60504' stroke-width='2' stroke-miterlimit='10'/%3E%3Cpath d='M10 1L1 10.2936' stroke='%23C60504' stroke-width='2' stroke-miterlimit='10'/%3E%3C/svg%3E");
+            }
+        }
+
+        &__return {
+            display: none;
+        }
+
+        &__list {
+            max-width: 49%;
+
+            &::-webkit-scrollbar {
+                background-color: $white;
+                width: toRem(8);
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: rgba(198, 5, 4, 0.5);
+                width: toRem(4);
+                height: toRem(10);
+                border-radius: toRem(4);
+                box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        &__item {
+            padding-top: toRem(0);
+            padding-bottom: toRem(0);
+            border-bottom: none;
+
+            &[open] {
+                .cat-popup__name {
+                    color: $red;
+                    transition: 0.2s $cubic;
+                    border-color: $red;
+
+                    & > .cat-popup__arrow {
+                        transition: 0.2s $cubic;
+                        background-image: url("data:image/svg+xml,%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6.14286C4.33333 7.7619 1 11 1 11' stroke='%23C60504' stroke-width='2'/%3E%3C/svg%3E");
+                    }
+                }
+
+                .cat-popup__inner {
+                    max-width: 49%;
+                    top: toRem(62);
+                    overflow: hidden;
+
+                    &-list {
+                        max-height: 100%;
+                        overflow-y: auto;
+                    }
+                }
+            }
+        }
+
+        &__name {
+            cursor: pointer;
+            padding-top: toRem(12);
+            padding-bottom: toRem(12);
+            border-bottom: 1px solid rgba(198, 5, 4, 0.2);
+
+            span:first-of-type {
+                font-weight: 400;
+            }
+
+            &::-webkit-details-marker,
+            &::marker {
+                display: none;
+            }
+
+            &:hover {
+                color: $red;
+                transition: 0.2s $cubic;
+                border-color: $red;
+
+                & > .cat-popup__arrow {
+                    transition: 0.2s $cubic;
+                    background-image: url("data:image/svg+xml,%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6.14286C4.33333 7.7619 1 11 1 11' stroke='%23C60504' stroke-width='2'/%3E%3C/svg%3E");
+                }
+            }
+        }
+
+        &__inner {
+            height: calc((var(--vh, 1vh) * 80));
+            bottom: auto;
+            top: toRem(61);
+            padding-top: 0;
+            overflow: hidden;
+            max-height: 100%;
+
+            &-list {
+                height: 100%;
+                background-color: $white;
+                overflow-y: auto;
+
+                &::-webkit-scrollbar {
+                    background-color: $white;
+                    width: toRem(8);
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background-color: rgba(198, 5, 4, 0.5);
+                    width: toRem(4);
+                    height: toRem(10);
+                    border-radius: toRem(4);
+                    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+                }
+            }
+
+            &-title {
+                display: none;
+            }
+
+            &-link {
+                padding-top: toRem(12);
+                padding-bottom: toRem(12);
+                padding-left: 0;
+
+                &:hover {
+                    color: $red;
+                    transition: 0.3s $cubic;
+                    border-color: $red;
+                }
+            }
+        }
+    }
+}

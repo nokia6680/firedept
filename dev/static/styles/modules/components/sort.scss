@@ -1,0 +1,103 @@
+.sort {
+    display: none;
+}
+
+@include min-screen(1366px) {
+    .sort {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+
+        background-color: #F5F5F5;
+        margin-bottom: toRem(20);
+
+        position: relative;
+        transition: max-height 0.3s $cubic;
+
+        &__title {
+            width: 100%;
+
+            @include flex-setting(column, center, flex-start);
+            @include font-setting($primary-font, toRem(14), toRem(16), 400, $black);
+            position: relative;
+            padding: toRem(14) toRem(18) toRem(14) toRem(16);
+            background-color: transparent;
+            border: none;
+            transition: 0.3s $cubic;
+            cursor: pointer;
+
+            &::after {
+                position: absolute;
+                content: '';
+
+                width: toRem(21);
+                height: toRem(10);
+
+                background-position: 50% 50%;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-image: url("data:image/svg+xml,%3Csvg width='21' height='11' viewBox='0 0 21 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 1H21' stroke='black' stroke-opacity='0.58'/%3E%3Cpath d='M0 5.66667H21' stroke='black' stroke-opacity='0.58'/%3E%3Cpath d='M0 10.3333H21' stroke='black' stroke-opacity='0.58'/%3E%3C/svg%3E");
+
+                right: toRem(18);
+                top: toRem(18);
+
+                transition: 0.3s $cubic;
+            }
+
+            &:hover {
+                color: $red;
+                transition: 0.3s $cubic;
+
+                &::after {
+                    background-image: url("data:image/svg+xml,%3Csvg width='21' height='11' viewBox='0 0 21 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 1H21' stroke='%23C60504' stroke-opacity='0.58'/%3E%3Cpath d='M0 5.66667H21' stroke='%23C60504' stroke-opacity='0.58'/%3E%3Cpath d='M0 10.3333H21' stroke='%23C60504' stroke-opacity='0.58'/%3E%3C/svg%3E");
+                    transition: 0.3s $cubic;
+                }
+            }
+        }
+
+        &__list {
+            @include flex-setting(column, flex-start, center);
+            padding: toRem(14) toRem(18) toRem(14) toRem(16);
+            width: 100%;
+            position: absolute;
+            top: toRem(48);
+            left: 0;
+            overflow: hidden;
+            transform: scaleY(0);
+            transform-origin: top;
+            background-color: #F5F5F5;
+            z-index: 999;
+
+            &.is-active {
+                transform-origin: top;
+                transform: scaleY(1);
+                transition: max-height 0.3s $cubic;
+                box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        &__item {
+            width: 100%;
+            @include flex-setting(row, flex-start, center);
+            margin-bottom: toRem(8);
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &__radio {
+            display: none;
+        }
+
+        &__label {
+            @include font-setting($primary-font, toRem(16), toRem(18), 300, $black);
+            transition: 0.35s $cubic;
+            cursor: pointer;
+        }
+
+        &__radio:checked + label {
+            color: $red;
+            transition: 0.35s $cubic;
+        }
+    }
+}

@@ -1,0 +1,120 @@
+include ../helpers/mixins
+block variables
+
+doctype html
+html(lang="ru-RU")
+    head
+        meta(charset="utf-8")
+        title #{title}
+        <!--[if IE]>
+        meta(http-equiv='X-UA-Compatible', content="IE = edge")
+        <![endif]-->
+        meta(name="viewport" content="width=device-width,initial-scale=1")
+        meta(name="keywords" content="")
+        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous")
+        link(rel="stylesheet" type='text/css' href="static/css/styles.css")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet")
+    body.body
+        include ../modules/header/header
+
+        main.main.main--white
+            section.cart
+                a(href="category.html" target="_self").cart__return Продолжить покупки
+
+                h1.cart__title.title Оформление заказов
+                .cart__content
+                    .cart__heading
+                        span.cart__heading-text Наименование товара
+                        span.cart__heading-text Цена
+                        span.cart__heading-text Количество
+                        span.cart__heading-text Стоимость
+                    ul.cart__list
+                        li.cart__item
+                            picture.cart__frame
+                                source(srcset="static/images/content/cart-1.webp" type="image/webp")
+                                img(src="static/images/content/cart-1.png" width="" height="" alt="").cart__frame-image
+                            .cart__details
+                                h3.cart__name Огнетушитель огнетушительный
+                                span.cart__price 5000 
+                                .cart__counter
+                                    input(value="1").cart__counter-input
+                                    .cart__counter-wrap
+                                        button.cart__counter-btn(data-direction="plus") +
+                                        button.cart__counter-btn(data-direction="minus") -
+                                span.cart__total 25000
+                                button(type="button").cart__delete
+                        li.cart__item
+                            picture.cart__frame
+                                source(srcset="static/images/content/cart-1.webp" type="image/webp")
+                                img(src="static/images/content/cart-1.png" width="" height="" alt="").cart__frame-image
+                            .cart__details
+                                h3.cart__name Огнетушитель огнетушительный
+                                span.cart__price 5000 
+                                .cart__counter
+                                    input(value="1").cart__counter-input
+                                    .cart__counter-wrap
+                                        button.cart__counter-btn(data-direction="plus") +
+                                        button.cart__counter-btn(data-direction="minus") -
+                                span.cart__total 25000
+                                button(type="button").cart__delete
+                        li.cart__item
+                            picture.cart__frame
+                                source(srcset="static/images/content/cart-1.webp" type="image/webp")
+                                img(src="static/images/content/cart-1.png" width="" height="" alt="").cart__frame-image
+                            .cart__details
+                                h3.cart__name Огнетушитель огнетушительный
+                                span.cart__price 5000 
+                                .cart__counter
+                                    input(value="1").cart__counter-input
+                                    .cart__counter-wrap
+                                        button.cart__counter-btn(data-direction="plus") +
+                                        button.cart__counter-btn(data-direction="minus") -
+                                span.cart__total 25000
+                                button(type="button").cart__delete
+                        li.cart__item
+                            picture.cart__frame
+                                source(srcset="static/images/content/cart-1.webp" type="image/webp")
+                                img(src="static/images/content/cart-1.png" width="" height="" alt="").cart__frame-image
+                            .cart__details
+                                h3.cart__name Огнетушитель огнетушительный
+                                span.cart__price 5000 
+                                .cart__counter
+                                    input(value="1").cart__counter-input
+                                    .cart__counter-wrap
+                                        button.cart__counter-btn(data-direction="plus") +
+                                        button.cart__counter-btn(data-direction="minus") -
+                                span.cart__total 25000
+                                button(type="button").cart__delete
+                    .cart__bottom
+                        span.cart__bottom-text Итого
+                        b.cart__bottom-sum 25000 
+                    button(type="button").cart__submit Оформить заказ
+            section.delivery
+                h2.delivery__title.title Доставка
+                form(method="get" action="").delivery__form
+                    ul.delivery__list
+                        li.delivery__item
+                            input(type="radio" name="delyType" id="delivery-self-shop" value="self-shop" checked).delivery__radio
+                            label(for="delivery-self-shop").delivery__label Самовывоз из магазина
+                        li.delivery__item
+                            input(type="radio" name="delyType" id="delivery-self-point" value="self-point").delivery__radio
+                            label(for="delivery-self-point").delivery__label Самовывоз из пункта выдачи
+                        li.delivery__item
+                            input(type="radio" name="delyType" id="delivery" value="delivery").delivery__radio
+                            label(for="delivery").delivery__label Доставка
+                    .delivery__block
+                        h3.delivery__subtitle Российская Федерация, Москва
+                        input(type="text" name="address" id="delivery-address" placeholder="Адрес").delivery__input
+                    .delivery__comment
+                        label(for="delivery-comment").delivery__label Дополнительная информация
+                        textarea(id="delivery-comment").delivery__textarea
+                    button(type="submit").delivery__submit Далее
+        include ../modules/footer/footer
+        include ../modules/popup/cat-popup
+        //script(src="static/js/vendor/jquery-3.3.1.min.js")
+        script(src="static/js/main.js")
+        script(src="static/js/libs.js")
+        script(src="static/js/main-slider.js")
+        block script

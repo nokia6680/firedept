@@ -1,0 +1,393 @@
+.tab-content {
+    &__title {
+        @include font-setting($primary-font, toRem(18), 1.125, 500, $black);
+        @include fluidFontSize(1.125rem, 1.5625rem, 20rem, 85.3125rem, 1.125rem);
+
+        margin-bottom: toRem(20);
+    }
+
+    &__description {
+        @include font-setting($primary-font, toRem(14), 1.14285, 400, $black);
+        @include fluidFontSize(0.875rem, 1.125rem, 20rem, 85.3125rem, 0.875rem);
+        text-align: left;
+        margin-bottom: toRem(10);
+    }
+
+    &__list {
+        @include flex-setting(column, flex-start, flex-start);
+        list-style: disc;
+        padding-left: toRem(20);
+    }
+
+    &__reviews {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+
+        margin-bottom: toRem(16);
+
+        &-item {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 13.21428571428571vw 1fr 22.14285714285714%;
+            grid-column-gap: 3.5714285vw;
+            grid-row-gap: toRem(6);
+            justify-content: start;
+            align-items: start;
+
+            margin-bottom: toRem(25);
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+
+        &-avatar {
+            @include box(100%);
+            aspect-ratio: 1 / 1;
+            max-width: toRem(70);
+            max-height: toRem(70);
+            @include flex-setting(column, center, center);
+            @include font-setting($primary-font, toRem(14), 1.14285714, 500, $white);
+            @include fluidFontSize(0.875rem, 1.5625rem, 20rem, 85.3125rem, 0.875rem);
+            text-transform: uppercase;
+            border-radius: 50%;
+            background-color: $red;
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+        }
+
+        &-name {
+            @include font-setting($primary-font, toRem(14), 1.14285, 500, $black);
+            @include fluidFontSize(0.875rem, 1.125rem, 20rem, 85.3125rem, 0.875rem);
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+
+        &-time {
+            @include font-setting($primary-font, toRem(12), 1.16666, 400, rgba(0, 0, 0, 0.6));
+            @include fluidFontSize(0.75rem, 0.875rem, 20rem, 85.3125rem, 0.75rem);
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+        }
+
+        &-description {
+            @include font-setting($primary-font, toRem(14), 1.14285, 400, $black);
+            @include fluidFontSize(0.875rem, 1.125rem, 20rem, 85.3125rem, 0.875rem);
+            text-align: left;
+
+            grid-column: 2 / 4;
+            grid-row: 3 / 4;
+        }
+
+        &-rating {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+        }
+    }
+
+    &__controls {
+        width: 100%;
+        @include flex-setting(column, flex-start, center);
+
+        &-btn {
+            width: 100%;
+            @include flex-setting(column, center, center);
+            @include font-setting($primary-font, toRem(14), 1.14285, 500, $black);
+            @include fluidFontSize(0.875rem, 1rem, 20rem, 85.3125rem, 0.875rem);
+            cursor: pointer;
+            padding: toRem(14) 0;
+            border-radius: toRem(10);
+
+            &.js-expand {
+                background-color: $white;
+                border: 2px solid rgba(0, 0, 0, 0.3);
+                margin-bottom: toRem(15);
+                transition: 0.2s $cubic;
+
+                &:active {
+                    border-color: rgba(198, 5, 4, 0.42);
+                    transition: 0.2s $cubic;
+                }
+            }
+
+            &.js-add-review {
+                background-color: $red;
+                border: 1px solid $red;
+                color: $white;
+                transition: 0.2s $cubic;
+
+                &:active {
+                    background-color: rgba(198, 5, 4, 0.79);
+                    transition: 0.2s $cubic;
+                }
+            }
+        }
+    }
+
+    &__tablewrap {
+        width: 100%;
+
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+
+        &::-webkit-scrollbar {
+            display: none;
+            -webkit-appearance: none;
+        }
+    }
+
+    &__table {
+        // overflow-x: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+
+        &::-webkit-scrollbar {
+            display: none;
+            -webkit-appearance: none;
+        }
+
+        .simplebar-track.simplebar-horizontal {
+            height: 3px;
+            background-color: #E3E3E3;
+            border-radius: 10px;
+            width: 100%;
+            left: 0;
+            overflow: visible;
+            bottom: 1px;
+        }
+
+        .simplebar-track.simplebar-horizontal {
+            .simplebar-scrollbar {
+                height: 5px;
+                top: -1px;
+                background-color: $red;
+                border-radius: 10px;
+
+                &::before {
+                    display: none;
+                }
+            }
+        }
+
+        .table {
+            width: 100%;
+            padding-bottom: toRem(16);
+
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+
+            &::-webkit-scrollbar {
+                display: none;
+                -webkit-appearance: none;
+            }
+
+            tr {
+                width: 100%;
+                border-bottom: 1px solid $gray;
+            }
+
+            &__cell {
+                padding: toRem(10) toRem(20) toRem(10) 0;
+                @include font-setting($primary-font, toRem(14), 1.14285, 300, $black);
+                @include fluidFontSize(0.875rem, 1.125rem, 20rem, 85.3125rem, 0.875rem);
+
+                &--title {
+                    @include fluidFontSize(1rem, 1.375rem, 20rem, 85.3125rem, 1rem);
+                    white-space: nowrap;
+                    font-weight: 400
+                }
+            }
+        }
+    }
+
+    &__video {
+        @include flex-setting(column, center, center);
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        position: relative;
+    }
+
+    &__player {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        object-fit: contain;
+        aspect-ratio: 16 / 9;
+    }
+
+    &__document {
+        @include flex-setting(column, flex-start, center);
+        width: 100%;
+        max-width: toRem(480);
+
+        &-item {
+            width: 100%;
+            @include flex-setting(column, center, center);
+            margin-bottom: toRem(10);
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &__frame {
+        width: 100%;
+        height: auto;
+        @include flex-setting(column, center, center);
+
+        &-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center
+        }
+    }
+
+}
+
+@include min-screen(768px) {
+    .tab-content {
+        &__title {
+            line-height: 1.16;
+            margin-bottom: toRem(20);
+        }
+
+        &__description {
+            line-height: 1.166667;
+            margin-bottom: toRem(16);
+        }
+
+        &__list {
+            padding-left: toRem(30);
+        }
+
+        &__reviews {
+            margin-bottom: toRem(16);
+            height: auto;
+
+            &-item {
+                height: auto;
+                grid-template-columns: toRem(70) 1fr toRem(72) toRem(130);
+                grid-column-gap: toRem(14);
+                grid-row-gap: 0;
+                align-items: center;
+
+                padding: toRem(16) 0;
+                margin-bottom: toRem(14);
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+
+            &-avatar {
+                line-height: 1.16;
+                grid-column: 1 / 2;
+                grid-row: 1 / 3;
+            }
+
+            &-name {
+                line-height: 1.1666667;
+                grid-column: 2 / 3;
+                grid-row: 1 / 2;
+            }
+
+            &-time {
+                line-height: 1.14285;
+                grid-column: 3 / 4;
+                grid-row: 2 / 3;
+                justify-self: start;
+                align-self: start;
+            }
+
+            &-description {
+                line-height: 1.1875;
+
+                grid-column: 2 / 3;
+                grid-row: 2 / 3;
+            }
+
+            &-rating {
+                grid-column: 4 / 5;
+                grid-row: 2 / 3;
+                align-self: start;
+            }
+        }
+
+        &__controls {
+            width: 100%;
+            @include flex-setting(column, flex-start, center);
+
+            &-btn {
+                width: 100%;
+                @include flex-setting(column, center, center);
+                @include font-setting($primary-font, toRem(14), 1.14285, 500, $black);
+                @include fluidFontSize(0.875rem, 1rem, 20rem, 85.3125rem, 0.875rem);
+
+                padding: toRem(14) 0;
+                border-radius: toRem(10);
+
+                &.js-expand {
+                    background-color: $white;
+                    border: 1px solid rgba(0, 0, 0, 0.3);
+                    margin-bottom: toRem(15);
+                }
+
+                &.js-add-review {
+                    background-color: $red;
+                    border: 1px solid $red;
+                    color: $white;
+                }
+            }
+        }
+
+        &__document {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-column-gap: toRem(10);
+            grid-row-gap: toRem(10);
+            justify-content: center;
+            align-items: start;
+            max-width: 100%;
+        }
+
+        &__frame {
+            width: 100%;
+            max-width: toRem(280);
+            overflow: hidden;
+
+            &-img {
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+@include min-screen(1366px) {
+    .tab-content {
+        &__controls {
+            margin-bottom: toRem(50);
+
+            &-btn {
+                &.js-add-review {
+                    display: none;
+                }
+
+                &.js-expand {
+                    margin-bottom: 0;
+
+                    &:hover {
+                        border-color: $red;
+                        transition: 0.2s $cubic;
+                    }
+                }
+            }
+        }
+    }
+}

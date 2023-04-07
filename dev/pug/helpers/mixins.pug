@@ -1,0 +1,108 @@
+mixin reviewItem(initials, name, description, date, dateFull, rating)
+    li.tab-content__reviews-item
+        span.tab-content__reviews-avatar=initials
+        b.tab-content__reviews-name=name
+        time(datetime="" +dateFull).tab-content__reviews-time=date
+        p.tab-content__reviews-description=description
+        
+        div(class="tab-content__reviews-rating rating rating--static " +rating)
+            svg(width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg" data-rating="1").rating__star
+                path(d="M8.73044 0.809018L10.3493 5.79134L10.4054 5.96409H10.5871H15.8258L11.5876 9.04333L11.4406 9.15009L11.4967 9.32284L13.1156 14.3052L8.87739 11.2259L8.73044 11.1192L8.5835 11.2259L4.34528 14.3052L5.96413 9.32284L6.02026 9.15009L5.87331 9.04333L1.6351 5.96409H6.87382H7.05546L7.11159 5.79134L8.73044 0.809018Z" stroke="black" stroke-opacity="0.12" stroke-width="0.5" fill="none")
+            svg(width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg" data-rating="2").rating__star
+                path(d="M8.73044 0.809018L10.3493 5.79134L10.4054 5.96409H10.5871H15.8258L11.5876 9.04333L11.4406 9.15009L11.4967 9.32284L13.1156 14.3052L8.87739 11.2259L8.73044 11.1192L8.5835 11.2259L4.34528 14.3052L5.96413 9.32284L6.02026 9.15009L5.87331 9.04333L1.6351 5.96409H6.87382H7.05546L7.11159 5.79134L8.73044 0.809018Z" stroke="black" stroke-opacity="0.12" stroke-width="0.5" fill="none")
+            svg(width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg" data-rating="3").rating__star
+                path(d="M8.73044 0.809018L10.3493 5.79134L10.4054 5.96409H10.5871H15.8258L11.5876 9.04333L11.4406 9.15009L11.4967 9.32284L13.1156 14.3052L8.87739 11.2259L8.73044 11.1192L8.5835 11.2259L4.34528 14.3052L5.96413 9.32284L6.02026 9.15009L5.87331 9.04333L1.6351 5.96409H6.87382H7.05546L7.11159 5.79134L8.73044 0.809018Z" stroke="black" stroke-opacity="0.12" stroke-width="0.5" fill="none")
+            svg(width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg" data-rating="4").rating__star
+                path(d="M8.73044 0.809018L10.3493 5.79134L10.4054 5.96409H10.5871H15.8258L11.5876 9.04333L11.4406 9.15009L11.4967 9.32284L13.1156 14.3052L8.87739 11.2259L8.73044 11.1192L8.5835 11.2259L4.34528 14.3052L5.96413 9.32284L6.02026 9.15009L5.87331 9.04333L1.6351 5.96409H6.87382H7.05546L7.11159 5.79134L8.73044 0.809018Z" stroke="black" stroke-opacity="0.12" stroke-width="0.5" fill="none")
+            svg(width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg" data-rating="5").rating__star
+                path(d="M8.73044 0.809018L10.3493 5.79134L10.4054 5.96409H10.5871H15.8258L11.5876 9.04333L11.4406 9.15009L11.4967 9.32284L13.1156 14.3052L8.87739 11.2259L8.73044 11.1192L8.5835 11.2259L4.34528 14.3052L5.96413 9.32284L6.02026 9.15009L5.87331 9.04333L1.6351 5.96409H6.87382H7.05546L7.11159 5.79134L8.73044 0.809018Z" stroke="black" stroke-opacity="0.12" stroke-width="0.5" fill="none")
+
+mixin breadcrumbsItem(text,href)
+    li.breadcrumbs__item
+        if(href)
+            a.breadcrumbs__link(href=href)=text
+        else
+            span.breadcrumbs__text=text
+
+mixin servItem(name, image, link, type)
+    div(class="service__item " +type)
+        a(href="" +link target="_self").service__link
+            h3.service__name=name
+            picture.service__frame
+                source(srcset="static/images/content/" +image + '.webp' type="image/webp")
+                img(src="static/images/content/" +image +'.png' width="" height="" alt="" +name).service__frame-image
+        a(href="" +link target="_self").service__arrow
+
+mixin item(className, name, type, stock, stockType, priceCur, priceOld, link, image)
+    article(class="item " +className)
+        .item__top
+            a(href="" +link target="_self").item__top-link
+                picture.item__top-frame
+                    source(srcset="static/images/content/" +image +'.webp' type="image/webp")
+                    img(src="static/images/content/" +image +'.png' width="" height="" alt).item__frame-image
+            div(class="item__badges " +type)
+                span.item__badges-sticker.item__badges-sticker--h Хит
+                span.item__badges-sticker.item__badges-sticker--s Акция
+                span.item__badges-sticker.item__badges-sticker--n Новинка
+        .item__body
+            a(href="" +link target="_self").item__link=name
+        span(class="item__status " +stockType)=stock
+        .item__bottom
+            .item__price
+                span.item__price-nr.item__price-nr--new=priceCur
+                span.item__price-nr.item__price-nr--old=priceOld
+            .item__controls
+                a(href="" +link target="_self").item__controls-link Подробнее
+                button(type="button").item__controls-btn.item__controls-btn--buy.js-instant-buy Купить сейчас
+                button(type="button").item__controls-btn.item__controls-btn--cart 
+                    span.item__controls-icon
+                    | В корзину
+
+mixin review(image, name, title, description)
+    .reviews__item.swiper-slide
+        picture.reviews__frame
+            source(media="(min-width: 768px)" srcset="static/images/content/" +image +'-lg.webp' type="image/webp")
+            source(media="(min-width: 768px)" srcset="static/images/content/" +image +'-lg.png')
+            source(srcset="static/images/content/" +image +'.webp' type="image/webp")
+            img(src="static/images/content/" +image +'.png' width="" height="" alt="")
+        b.reviews__name=name
+        span.reviews__pos=title
+        p.reviews__description=description
+        
+mixin shipItem(name, image, date, dateFull, link)
+    li.shipping__item
+        a(href="" +link target="_self").shipping__link
+            picture.shipping__frame
+                source(media="(min-width: 1366px)" srcset="static/images/content/" +image + "-lg.webp" type="image/webp")
+                source(media="(min-width: 1366px)" srcset="static/images/content/" +image + "-lg.png")
+                source(srcset="static/images/content/" +image +'-sm.webp' type="image/webp")
+                img(src="static/images/content/" +image +'-sm.png' width="" height="" alt="").news-main__frame-image
+            .shipping__info
+                time(datetime="" +dateFull).shipping__date=date
+                h3.shipping__name=name
+            a(href="" +link target="_self").shipping__more
+                span Подробнее
+                span.shipping__more-icon
+                    
+mixin newsItem(name, image, date, dateFull, description, link)
+    li.news-main__item
+        a(href="" +link target="_self").news-main__link
+            picture.news-main__frame
+                source(srcset="static/images/content/" +image +'.webp' type="image/webp")
+                img(src="static/images/content/" +image +'.png' width="" height="" alt="").news-main__frame-image
+            .news-main__info
+                time(datetime="" +dateFull).news-main__date=date
+                h3.news-main__name=name
+                p.news-main__description=description
+        a(href="" +link target="_self").news-main__more
+            span Читать
+            span.news-main__more-icon
+
+
+mixin itemSimple(type, name, link, image)
+    article(class="catalog__item " +type)
+        a(href="" +link target="_self").catalog__link
+            picture.catalog__frame
+                source(srcset="static/images/content/" +image +'.webp' type="image/webp")
+                img(src="static/images/content/" +image +'.png' width="" height="" alt="" +name).catalog__frame-image
+            h3.catalog__name=name

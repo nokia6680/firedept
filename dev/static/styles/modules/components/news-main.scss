@@ -1,0 +1,177 @@
+.news-main {
+    width: 100%;
+
+    @include flex-setting(column, flex-start, flex-start);
+
+    padding: toRem(8) 6.25% toRem(40) 6.25%;
+
+    &__title {
+        margin-bottom: toRem(15);
+    }
+
+    &__list {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 280px);
+        grid-auto-flow: dense;
+        grid-row-gap: toRem(20);
+        grid-column-gap: toRem(20);
+        margin-bottom: toRem(14);
+    }
+
+    &__item {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 10px;
+
+        margin-bottom: toRem(18);
+        padding-bottom: toRem(22);
+
+        overflow: hidden;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    &__link {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+        text-decoration: none;
+    }
+
+    &__info {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+        padding: 0 3.571428%;
+        margin-bottom: toRem(6);
+    }
+
+    &__frame {
+        width: 100%;
+        margin-bottom: toRem(10);
+        @include flex-setting(column, center, center);
+    }
+
+    &__date {
+        @include font-setting($primary-font, toRem(10), 1.2, 400, rgba(0, 0, 0, 0.5));
+        @include fluidFontSize(0.625rem, 0.875rem, 20rem, 85.3125rem, 0.625rem);
+        margin-bottom: toRem(8);
+    }
+
+    &__name {
+        @include font-setting($primary-font, toRem(16), 1.125, 500, $black);
+        @include fluidFontSize(1rem, 1.125rem, 20rem, 85.3125rem, 1rem);
+        margin-bottom: toRem(8);
+    }
+
+    &__description {
+        @include font-setting($primary-font, toRem(12), 1.16667, 400, $black);
+        @include fluidFontSize(0.75rem, 1rem, 20rem, 85.3125rem, 0.75rem);
+        text-align: left;
+    }
+
+    &__more {
+        width: auto;
+        @include flex-setting(row, flex-start, center);
+        @include font-setting($primary-font, toRem(10), toRem(12), 400, rgba(0, 0, 0, 0.5));
+        @include fluidFontSize(0.625rem, 0.875rem, 20rem, 85.3125rem, 0.625rem);
+        text-decoration: none;
+        position: relative;
+        white-space: nowrap;
+
+        margin-left: 3.571428%;
+
+        &-icon {
+            display: block;
+            width: toRem(19);
+            height: toRem(8);
+
+            background-image: url("data:image/svg+xml,%3Csvg width='36' height='8' viewBox='0 0 36 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M35.3536 4.35356C35.5488 4.15829 35.5488 3.84171 35.3536 3.64645L32.1716 0.464469C31.9763 0.269207 31.6597 0.269207 31.4645 0.464469C31.2692 0.659731 31.2692 0.976313 31.4645 1.17158L34.2929 4L31.4645 6.82843C31.2692 7.02369 31.2692 7.34027 31.4645 7.53554C31.6597 7.7308 31.9763 7.7308 32.1716 7.53554L35.3536 4.35356ZM-4.37114e-08 4.5L35 4.5L35 3.5L4.37114e-08 3.5L-4.37114e-08 4.5Z' fill='%23C60504'/%3E%3C/svg%3E");
+            background-position: center right;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: max-width 0.3s $cubic;
+
+            margin-left: toRem(10);
+        }
+
+        &:active {
+            .news-main__more-icon {
+                width: toRem(35);
+                max-width: toRem(35);
+                transition: max-width  0.3s $cubic;
+            }
+        }
+    }
+}
+
+@include min-screen(768px) {
+    .news-main {
+        padding: toRem(40) 6.25% ;
+
+        &__title {
+            margin-bottom: toRem(20);
+        }
+
+        &__list {
+            grid-template-columns: repeat(auto-fill, 324px);
+            margin-bottom: toRem(28);
+            justify-content: center;
+            align-items: start;
+        }
+
+        &__item {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@include min-screen(1366px) {
+    .news-main {
+        --width: calc(100% - 1182px);
+        padding: toRem(60) calc(var(--width) / 2);
+
+        &__title {
+            margin-bottom: toRem(40);
+        }
+
+        &__list {
+            grid-template-columns: repeat(auto-fill, 372px);
+            grid-column-gap: toRem(33);
+            grid-row-gap: toRem(33);
+            justify-content: center;
+            align-items: start;
+        }
+
+        &__item {
+            margin-bottom: 0;
+        }
+
+        &__frame {
+            margin-bottom: toRem(20);
+        }
+
+        &__info {
+            padding: 0 toRem(24) toRem(28) toRem(24);
+            margin-bottom: toRem(20);
+        }
+
+        &__date {
+            margin-bottom: toRem(14);
+        }
+
+        &__name {
+            font-weight: 700;
+            max-width: 80%;
+            margin-bottom: toRem(10);
+        }
+
+        &__more {
+            padding: 0 toRem(24);
+            margin: 0;
+        }
+    }
+}

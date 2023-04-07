@@ -1,0 +1,249 @@
+.service {
+    width: 100%;
+
+    @include flex-setting(column, flex-start, flex-start);
+
+    padding: toRem(27) 6.25% 0 6.25%;
+    margin-bottom: toRem(16);
+
+    &__list {
+        width: 100%;
+        margin-bottom: toRem(12);
+    }
+
+    &__slider {
+        width: 100%;
+        position: relative;
+    }
+
+    &__item {
+        width: 100%;
+        height: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+
+        background-color: $white;
+
+        padding: toRem(20) toRem(32) toRem(46) toRem(32);
+    }
+
+    &__link {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+        text-decoration: none;
+
+        &:active {
+            & + .service__arrow {
+                max-width: toRem(180);
+                transition: max-width 0.3s $cubic;
+            }
+        }
+    }
+
+    &__name {
+        @include font-setting($secondary-font, toRem(16), 1.1875, 500, $black);
+        @include fluidFontSize(1rem, 1.25rem, 20rem, 85.3125rem, 1rem);
+        max-width: 80%;
+        text-align: left;
+        margin-bottom: toRem(14);
+    }
+
+    &__frame {
+        width: 100%;
+        height: 100%;
+        @include flex-setting(column, center, center);
+
+        &-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+    }
+
+    &__prev,
+    &__next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        width: 6.875%;
+        height: toRem(42);
+        background: $white;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: 5px 10px;
+        border: 1px solid rgba(0, 0, 0, 0.07);
+        z-index: 2;
+    }
+
+    &__prev {
+        left: 6.25%;
+        background-image: url("data:image/svg+xml,%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 11L2 5.85714C3.66667 4.2381 7 1 7 1' stroke='%23D6D6D6' stroke-width='2'/%3E%3C/svg%3E");
+        transition: 0.3s $cubic;
+
+        &:active {
+            background-image: url("data:image/svg+xml,%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 11L2 5.85714C3.66667 4.2381 7 1 7 1' stroke='%23C60504' stroke-width='2'/%3E%3C/svg%3E");
+            transition: 0.3s $cubic;
+        }
+    }
+
+    &__next {
+        right: 6.25%;
+        background-image: url("data:image/svg+xml,%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6.14286C4.33333 7.7619 1 11 1 11' stroke='%23D6D6D6' stroke-width='2'/%3E%3C/svg%3E");
+        transition: 0.3s $cubic;
+
+        &:active {
+            background-image: url("data:image/svg+xml,%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6.14286C4.33333 7.7619 1 11 1 11' stroke='%23C60504' stroke-width='2'/%3E%3C/svg%3E");
+            transition: 0.3s $cubic;
+        }
+    }
+
+    &__arrow {
+        position: absolute;
+        left: toRem(32);
+        bottom: toRem(32);
+        width: 100%;
+        max-width: toRem(52);
+        transition: max-width 0.3s $cubic;
+        height: toRem(16);
+        background-image: url("data:image/svg+xml,%3Csvg width='180' height='16' viewBox='0 0 180 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M179.707 8.70711C180.098 8.31658 180.098 7.68342 179.707 7.29289L173.343 0.928932C172.953 0.538408 172.319 0.538408 171.929 0.928932C171.538 1.31946 171.538 1.95262 171.929 2.34315L177.586 8L171.929 13.6569C171.538 14.0474 171.538 14.6805 171.929 15.0711C172.319 15.4616 172.953 15.4616 173.343 15.0711L179.707 8.70711ZM0 9H179V7H0L0 9Z' fill='%23C60504'/%3E%3C/svg%3E");
+        background-position: center right;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        &:active {
+            max-width: toRem(180);
+            transition: max-width 0.3s $cubic;
+        }
+    }
+
+    &__pagination {
+        position: absolute;
+        bottom: toRem(-20) !important;
+
+        z-index: 2;
+
+        width: auto;
+        @include flex-setting(row, center, center);
+
+        .swiper-pagination-bullet {
+            width: toRem(7);
+            height: toRem(7);
+            background: rgba(204, 201, 201, 0.31);
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: $red;
+        }
+    }
+}
+
+@include min-screen(768px) {
+    .service {
+        padding: 0 6.25%;
+        margin-bottom: toRem(74);
+        &__title {
+            margin-bottom: toRem(40);
+        }
+        &__list {
+            margin-bottom: 0;
+        }
+
+        &__item {
+            transition: 0.3s $cubic;
+
+            &:hover {
+                transform: scale(1.0285);
+                transform-origin: center;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                transition: 0.3s $cubic;
+            }
+        }
+
+        &__slider {
+            overflow: hidden;
+            .swiper-wrapper {
+                margin-bottom: toRem(34);
+                padding: toRem(10) 0;
+            }
+        }
+
+        &__item {
+            max-width: toRem(274);
+            padding: toRem(36) toRem(17);
+            transition: 0.35s $cubic;
+
+            &:hover {
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                transition: 0.35s $cubic;
+            }
+        }
+
+        &__name {
+            line-height: 1.2;
+            margin-bottom: toRem(24);
+        }
+
+        &__pagination {
+            position: relative;
+            bottom: auto !important;
+
+            .swiper-pagination-bullet {
+                width: toRem(11);
+                height: toRem(11);
+                margin: 0 toRem(7);
+            }
+        }
+    }
+}
+
+@include min-screen(1366px) {
+    .service {
+        --width: calc(100% - 1182px);
+        padding: 0 calc(var(--width) / 2);
+
+        &__controls {
+            @include flex-setting(row, center, center);
+            width: auto;
+            position: absolute;
+            top: 0;
+            right: calc(var(--width) / 2);
+        }
+
+        &__prev,
+        &__next {
+            position: relative;
+            top: auto;
+            transform: none;
+            cursor: pointer;
+            width: toRem(72);
+            background-size: 10px 18px;
+        }
+
+        &__prev {
+            left: auto;
+            margin-right: toRem(14);
+
+            &:hover {
+                border-color: $red;
+                background-image: url("data:image/svg+xml,%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 11L2 5.85714C3.66667 4.2381 7 1 7 1' stroke='%23C60504' stroke-width='2'/%3E%3C/svg%3E");
+                transition: 0.3s $cubic;
+            }
+        }
+
+        &__next {
+            right: auto;
+
+            &:hover {
+                border-color: $red;
+                background-image: url("data:image/svg+xml,%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6.14286C4.33333 7.7619 1 11 1 11' stroke='%23C60504' stroke-width='2'/%3E%3C/svg%3E");
+                transition: 0.3s $cubic;
+            }
+        }
+
+        &__arrow {
+            left: toRem(18);
+            bottom: toRem(38);
+        }
+    }
+}

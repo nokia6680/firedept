@@ -1,0 +1,357 @@
+.cart {
+    width: 100%;
+    @include flex-setting(column, flex-start, flex-start);
+
+    padding: toRem(10) 6.25% 0 6.25%;
+    margin-bottom: toRem(24);
+
+    &__title {
+        margin-bottom: toRem(10);
+    }
+
+    &__return {
+        position: relative;
+        @include font-setting($primary-font, toRem(12), 1.166667, 400, $black);
+        @include fluidFontSize(0.75rem, 1rem, 20rem, 85.3125rem, 0.75rem);
+        padding-left: toRem(26);
+        margin-bottom: toRem(8);
+        text-decoration: none;
+
+        &::before {
+            position: absolute;
+            content: '';
+
+            width: toRem(19);
+            height: toRem(8);
+
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='8' viewBox='0 0 20 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.646446 3.64645C0.451185 3.84171 0.451185 4.15829 0.646446 4.35356L3.82843 7.53554C4.02369 7.7308 4.34027 7.7308 4.53553 7.53554C4.7308 7.34027 4.7308 7.02369 4.53553 6.82843L1.70711 4L4.53553 1.17157C4.7308 0.976312 4.7308 0.65973 4.53553 0.464467C4.34027 0.269205 4.02369 0.269205 3.82843 0.464468L0.646446 3.64645ZM20 3.5L1 3.5L1 4.5L20 4.5L20 3.5Z' fill='%23C60504'/%3E%3C/svg%3E");
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    &__content {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+    }
+
+    &__heading {
+        display: none;
+    }
+
+    &__list {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+        padding-bottom: toRem(10);
+        margin-bottom: toRem(10);
+        border-bottom: 2px solid #F1F1F1;
+    }
+
+    &__item {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 31.071428571428% 1fr;
+        grid-column-gap: 10%;
+
+        margin-bottom: toRem(24);
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    &__details {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 46.4285714%;
+        grid-column-gap: 8.33333%;
+        grid-row-gap: toRem(8);
+        justify-content: start;
+        align-items: end;
+    }
+
+    &__name {
+        width: 100%;
+        @include font-setting($primary-font, toRem(14), 1.142857, 400, $black);
+        @include fluidFontSize(0.875rem, 1rem, 20rem, 85.3125rem, 0.875rem);
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+        text-align: right;
+    }
+
+    &__price {
+        @include font-setting($primary-font, toRem(18), 1.166667, 500, #E01414);
+        @include fluidFontSize(1.125rem, 1.5625rem, 20rem, 85.3125rem, 1.125rem);
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        align-self: end;
+        text-align: right;
+    }
+
+    &__counter {
+        width: toRem(78);
+        height: toRem(35);
+        @include flex-setting(row, space-between, center);
+
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 15px;
+
+        position: relative;
+
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+        align-self: end;
+        justify-self: end;
+
+        &-input {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            width: toRem(46);
+            height: 100%;
+            border: none;
+            background-color: transparent;
+            text-align: center;
+            @include font-setting($secondary-font, toRem(16), toRem(19), 500, $black);
+            order: 2;
+        }
+
+        &-wrap {
+            width: 100%;
+            @include flex-setting(row, space-between, center);
+        }
+
+        &-btn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            width: toRem(36);
+            @include flex-setting(column, center, center);
+            @include font-setting($secondary-font, toRem(20), toRem(24), 500, rgba(0, 0, 0, 0.2));
+
+            &[data-direction="plus"] {
+                order: 3;
+            }
+
+            &[data-direction="minus"] {
+                order: 1;
+            }
+
+            &:active {
+                color: #C97A7C;
+                transition: 0.2s $cubic;
+            }
+        }
+    }
+
+    &__total {
+        @include font-setting($primary-font, toRem(18), 1.166667, 500, #E01414);
+        @include fluidFontSize(1.125rem, 1.5625rem, 20rem, 85.3125rem, 1.125rem);
+        display: none;
+    }
+
+    &__delete {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+        width: toRem(26);
+        height: toRem(26);
+        align-self: center;
+        justify-self: end;
+        background-image: url("data:image/svg+xml,%3Csvg width='14' height='17' viewBox='0 0 14 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.40023 5.36016H5.44023V13.6802H4.40023V5.36016ZM6.48023 5.36016H7.52023V13.6802H6.48023V5.36016ZM8.56023 5.36016H9.60023V13.6802H8.56023V5.36016ZM0.240234 2.24016H13.7602V3.28016H0.240234V2.24016ZM9.60023 2.24016H8.56023V1.72016C8.56023 1.40816 8.35223 1.20016 8.04023 1.20016H5.96023C5.64823 1.20016 5.44023 1.40816 5.44023 1.72016V2.24016H4.40023V1.72016C4.40023 0.836156 5.07623 0.160156 5.96023 0.160156H8.04023C8.92423 0.160156 9.60023 0.836156 9.60023 1.72016V2.24016Z' fill='black' fill-opacity='0.7'/%3E%3Cpath d='M10.1203 16.8H3.88027C3.04827 16.8 2.32027 16.124 2.21627 15.292L1.28027 2.81201L2.32027 2.70801L3.25627 15.188C3.25627 15.5 3.56827 15.76 3.88027 15.76H10.1203C10.4323 15.76 10.6923 15.5 10.7443 15.188L11.6803 2.70801L12.7203 2.81201L11.7843 15.292C11.6803 16.124 10.9523 16.8 10.1203 16.8Z' fill='black' fill-opacity='0.7'/%3E%3C/svg%3E");
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: toRem(14) toRem(17);
+        background-color: transparent;
+        border: none;
+        transition: 0.2s $cubic;
+        cursor: pointer;
+
+        &:active {
+            background-image: url("data:image/svg+xml,%3Csvg width='14' height='17' viewBox='0 0 14 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.40023 5.36016H5.44023V13.6802H4.40023V5.36016ZM6.48023 5.36016H7.52023V13.6802H6.48023V5.36016ZM8.56023 5.36016H9.60023V13.6802H8.56023V5.36016ZM0.240234 2.24016H13.7602V3.28016H0.240234V2.24016ZM9.60023 2.24016H8.56023V1.72016C8.56023 1.40816 8.35223 1.20016 8.04023 1.20016H5.96023C5.64823 1.20016 5.44023 1.40816 5.44023 1.72016V2.24016H4.40023V1.72016C4.40023 0.836156 5.07623 0.160156 5.96023 0.160156H8.04023C8.92423 0.160156 9.60023 0.836156 9.60023 1.72016V2.24016Z' fill='%23C60504' fill-opacity='0.7'/%3E%3Cpath d='M10.1203 16.8H3.88027C3.04827 16.8 2.32027 16.124 2.21627 15.292L1.28027 2.81201L2.32027 2.70801L3.25627 15.188C3.25627 15.5 3.56827 15.76 3.88027 15.76H10.1203C10.4323 15.76 10.6923 15.5 10.7443 15.188L11.6803 2.70801L12.7203 2.81201L11.7843 15.292C11.6803 16.124 10.9523 16.8 10.1203 16.8Z' fill='%23C60504' fill-opacity='0.7'/%3E%3C/svg%3E");
+            transition: 0.2s $cubic;
+        }
+    }
+
+    &__bottom {
+        width: 100%;
+        @include flex-setting(row, space-between, center);
+
+        margin-bottom: toRem(24);
+
+        &-text {
+            @include font-setting($primary-font, toRem(14), 1.1428571, 400, rgba(0, 0, 0, 0.6));
+            @include fluidFontSize(0.875rem, 1rem, 20rem, 85.3125rem, 0.875rem);
+        }
+
+        &-sum {
+            @include font-setting($primary-font, toRem(20), 1.15, 500, #E01414);
+            @include fluidFontSize(1.25rem, 2.5rem, 20rem, 85.3125rem, 1.25rem);
+        }
+    }
+
+    &__submit {
+        width: 100%;
+        @include flex-setting(column, center, center);
+        @include font-setting($secondary-font, toRem(14), toRem(17), 700, $white);
+
+        padding: toRem(16) 0;
+        border-radius: toRem(14);
+        background-color: $red;
+
+        border: none;
+
+        transition: 0.2s $cubic;
+
+        &:active {
+            background-color: rgba(198, 5, 4, 0.79);
+            transition: 0.2s $cubic;
+        }
+    }
+}
+
+@include min-screen(768px) {
+    .cart {
+        padding: toRem(40) 6.25% 0 6.25%;
+        margin-bottom: toRem(48);
+
+        &__title {
+            margin-bottom: toRem(20);
+        }
+
+        &__return {
+            margin-bottom: toRem(16);
+        }
+
+        &__heading {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 48.90016920473773% 15.90524534686971% 19.96615905245347% 10.32148900169205% toRem(26);
+            justify-content: start;
+            align-items: center;
+            background: #F9F9F9;
+            border-radius: toRem(5);
+            padding: toRem(18) 0 toRem(18) toRem(30);
+        }
+
+        &__item {
+            grid-template-columns: 1fr;
+            grid-column-gap: 0;
+            padding-left: toRem(30);
+            padding-top: toRem(8);
+            padding-bottom: toRem(8);
+        }
+
+        &__frame {
+            display: none;
+        }
+
+        &__details {
+            width: 100%;
+            grid-template-columns: 48.90016920473773% 15.90524534686971% 19.96615905245347% 10.32148900169205% toRem(26);
+            grid-column-gap: 0;
+            grid-row-gap: 0;
+            justify-content: start;
+            align-items: center;
+        }
+
+        &__name {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+            text-align: left;
+        }
+
+        &__price {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            align-self: center;
+            text-align: left;
+        }
+
+        &__counter {
+            width: toRem(90);
+            height: toRem(32);
+            grid-column: 3 / 4;
+            grid-row: 1 / 2;
+            align-self: center;
+            justify-self: start;
+
+            &-input {
+                width: toRem(30);
+            }
+
+            &-btn {
+                width: toRem(30);
+            }
+        }
+
+        &__total {
+            grid-column: 4 / 5;
+            grid-row: 1 / 2;
+            display: inline-flex;
+        }
+
+        &__delete {
+            grid-column: 5 / 6;
+            grid-row: 1 / 2;
+        }
+
+        &__bottom {
+            width: auto;
+            align-self: flex-end;
+            justify-content: flex-end;
+
+            margin-bottom: toRem(40);
+            padding-right: toRem(30);
+
+            &-text {
+                margin-right: toRem(88);
+            }
+        }
+
+        &__submit {
+            align-self: flex-end;
+            width: auto;
+            padding: toRem(16) toRem(52);
+        }
+    }
+}
+
+@include min-screen(1366px) {
+    .cart {
+        --width: calc(100% - 1182px);
+        padding: toRem(60) calc(var(--width) / 2);
+
+        &__title {
+            margin-bottom: toRem(40);
+        }
+
+        &__delete {
+            &:hover {
+                background-image: url("data:image/svg+xml,%3Csvg width='14' height='17' viewBox='0 0 14 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.40023 5.36016H5.44023V13.6802H4.40023V5.36016ZM6.48023 5.36016H7.52023V13.6802H6.48023V5.36016ZM8.56023 5.36016H9.60023V13.6802H8.56023V5.36016ZM0.240234 2.24016H13.7602V3.28016H0.240234V2.24016ZM9.60023 2.24016H8.56023V1.72016C8.56023 1.40816 8.35223 1.20016 8.04023 1.20016H5.96023C5.64823 1.20016 5.44023 1.40816 5.44023 1.72016V2.24016H4.40023V1.72016C4.40023 0.836156 5.07623 0.160156 5.96023 0.160156H8.04023C8.92423 0.160156 9.60023 0.836156 9.60023 1.72016V2.24016Z' fill='%23C60504' fill-opacity='0.7'/%3E%3Cpath d='M10.1203 16.8H3.88027C3.04827 16.8 2.32027 16.124 2.21627 15.292L1.28027 2.81201L2.32027 2.70801L3.25627 15.188C3.25627 15.5 3.56827 15.76 3.88027 15.76H10.1203C10.4323 15.76 10.6923 15.5 10.7443 15.188L11.6803 2.70801L12.7203 2.81201L11.7843 15.292C11.6803 16.124 10.9523 16.8 10.1203 16.8Z' fill='%23C60504' fill-opacity='0.7'/%3E%3C/svg%3E");
+                transition: 0.2s $cubic;
+            }
+        }
+
+        &__submit {
+            cursor: pointer;
+            &:hover {
+                background-color: #A20605;
+                transition: 0.2s $cubic;
+            }
+        }
+
+        &__counter {
+            &-btn {
+                &:hover {
+                    color: #C60504;
+                    transition: 0.2s $cubic;
+                }
+            }
+        }
+    }
+}

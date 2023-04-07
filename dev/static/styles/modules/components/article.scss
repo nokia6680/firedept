@@ -1,0 +1,221 @@
+.article {
+    width: 100%;
+
+    @include flex-setting(column, flex-start, flex-start);
+
+    padding: toRem(20) 6.2%;
+
+    &__block {
+        width: 100%;
+        display: inline-block;
+        margin-bottom: toRem(32);
+
+        & > * {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    h2 {
+        @include font-setting($primary-font, toRem(14), 1.66667, 500, $black);
+        @include fluidFontSize(0.875rem, 1.75rem, 20rem, 85.3125rem, 0.875rem);
+        margin-bottom: toRem(20);
+
+    }
+
+    h3 {
+        @include font-setting($primary-font, toRem(12), 1.66667, 500, $black);
+        @include fluidFontSize(0.75rem, 1.5625rem, 20rem, 85.3125rem, 0.75rem);
+        margin-bottom: toRem(20);
+    }
+
+    p {
+        @include font-setting($primary-font, toRem(12), 1.66667, 400, $black);
+        @include fluidFontSize(0.75rem, 1.125rem, 20rem, 85.3125rem, 0.75rem);
+        text-align: left;
+        margin-bottom: toRem(16);
+    }
+
+    &__gallery {
+        width: 100%;
+        @include flex-setting(column, flex-start, center);
+        margin-bottom: toRem(24);
+    }
+
+    picture {
+        width: 100%;
+        height: 0;
+        @include flex-setting(column, center, center);
+        padding-bottom: 63.57142857142858%;
+        margin-bottom: toRem(10);
+
+        position: relative;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+    }
+
+    ul {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+        gap: toRem(10);
+        margin-bottom: toRem(32);
+    }
+
+    li {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+        @include gapFallbackV(10px);
+        position: relative;
+        padding-left: toRem(24);
+
+        &::before {
+            position: absolute;
+            content: '';
+
+            width: toRem(10);
+            height: 1px;
+            background-color: $black;
+
+            left: 0;
+            top: toRem(10);
+        }
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    &__btn {
+        width: 100%;
+        @include flex-setting(column, center, center);
+        @include font-setting($secondary-font, toRem(14), toRem(17), 700, $white);
+
+        padding: toRem(16) 0;
+        border-radius: toRem(14);
+        background-color: $red;
+
+        border: none;
+
+        margin-bottom: toRem(40);
+        transition: 0.3s $cubic;
+        cursor: pointer;
+
+        &:active {
+            background-color: rgba(248, 126, 39, 0.85);
+            transition: 0.3s $cubic;
+        }
+
+        &:disabled {
+            background-color: #D9D9D9;
+            pointer-events: none;
+        }
+    }
+}
+
+@include min-screen(768px) {
+    .article {
+        padding: toRem(40) 6.25%;
+
+        &__block {
+            margin-bottom: toRem(48);
+
+            & > * {
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        h3 {
+            margin-bottom: toRem(24);
+        }
+
+        p {
+            margin-bottom: toRem(18);
+        }
+
+        &__gallery {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: toRem(32);
+        }
+
+        picture {
+            margin-bottom: 0;
+            margin-right: toRem(20);
+            position: relative;
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+
+        ul {
+            margin-bottom: toRem(32);
+        }
+
+        &__btn {
+            width: auto;
+            padding: toRem(16) toRem(53);
+        }
+    }
+}
+
+@include min-screen(1366px) {
+    .article {
+        padding: toRem(60) 6.2%;
+        --width: calc(100% - 1182px);
+        padding: toRem(60) calc(var(--width) / 2);
+
+        &__title {
+            margin-bottom: toRem(40);
+        }
+
+        &__block {
+            margin-bottom: toRem(48);
+
+            & > * {
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        &__gallery {
+            margin-bottom: toRem(48);
+        }
+
+        ul {
+            margin-bottom: toRem(48);
+        }
+
+        li {
+            &::before {
+                top: toRem(20);
+                height: 2px;
+            }
+        }
+
+        &__btn {
+            &:hover {
+                background-color: #A20605;
+                transition: 0.3s $cubic;
+            }
+        }
+    }
+}

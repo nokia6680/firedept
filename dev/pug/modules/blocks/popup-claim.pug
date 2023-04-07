@@ -1,0 +1,25 @@
+.popup-claim
+    .popup-claim__wrapper
+        button(type="button").popup-claim__closer
+        h3.popup-claim__title Оформление заявки
+        
+        form(method="" action="").popup-claim__form
+            ul.popup-claim__list
+                li.popup-claim__item
+                    label(for="claim-name").popup-claim__label Ваше имя
+                        span *
+                    input(type="text" name="claim-name" id="claim-name" placeholder="Имя").popup-claim__input
+                li.popup-claim__item
+                    label(for="claim-tel").popup-claim__label Ваш телефон
+                        span *
+                    input(type="tel" name="claim-tel" id="claim-tel" placeholder="+7 903 999 99 99").popup-claim__input
+                li.popup-claim__item
+                    label(for="claim-content").popup-claim__label Текст отзыва
+                    textarea(name="claim-text" id="claim-content").popup-claim__textarea
+            span.popup-claim__note
+                span * 
+                | Обязательно к заполнению
+            .popup-claim__block
+                input(type="checkbox" name="claim-agree" id="claim-agree").popup-claim__checkbox
+                label(for="claim-agree").popup-claim__agree Вы соглашаетесь на обработку персональных данных с Политикой конфиденциальности компании
+            button(type="button").popup-claim__submit Оформить заказ

@@ -1,0 +1,16 @@
+.popup-callback.js-callback-popup
+    .popup-callback__wrapper
+        button(type="button").popup-callback__closer
+        h3.popup-callback__title Заказать звонок
+        form(method="" action="").popup-callback__form
+            ul.popup-callback__list
+                li.popup-callback__item
+                    label(for="callback-name").popup-callback__label Ваше имя
+                    input(type="text" name="callback-name" id="callback-name" placeholder="Имя").popup-callback__input
+                li.popup-callback__item
+                    label(for="callback-tel").popup-callback__label Ваш телефон
+                    input(type="tel" name="callback-tel" id="callback-tel" placeholder="+7 903 999 99 99").popup-callback__input
+            .popup-callback__block
+                input(type="checkbox" name="callback-agree" id="callback-agree").popup-callback__checkbox
+                label(for="callback-agree").popup-callback__agree Вы соглашаетесь на обработку персональных данных с Политикой конфиденциальности компании
+            button(type="submit").popup-callback__submit Свяжитесь со мной

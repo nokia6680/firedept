@@ -1,0 +1,99 @@
+.tags {
+    width: 100%;
+    @include flex-setting(row, flex-start, center);
+
+    flex-wrap: wrap;
+
+    padding: toRem(8) 6.25% 0 6.25%;
+    margin-bottom: toRem(20);
+    gap: toRem(8) toRem(6);
+
+    &--category {
+        padding: 0;
+    }
+
+    &__item {
+        width: auto;
+        @include flex-setting(column, center, center);
+        @include gapFallback(6px);
+
+        &-link {
+            @include flex-setting(column, center, center);
+            @include font-setting($primary-font, toRem(12), 1.16666, 400, $black);
+            @include fluidFontSize(0.75rem, 1rem, 20rem, 85.3125rem, 0.75rem);
+
+            padding: toRem(4) toRem(26);
+            background: #F5F5F5;
+            border-radius: 6px;
+
+            text-decoration: none;
+            cursor: pointer;
+            outline: none;
+
+            &:active {
+                background-color: rgba(198, 5, 4, 0.2);
+                transition: 0.2s $cubic;
+            }
+        }
+
+        &.inactive {
+            .tags__item-link {
+                background-color: $orange;
+                pointer-events: none;
+            }
+        }
+    }
+}
+
+@include min-screen(768px) {
+    .tags {
+        padding: toRem(40) 6.25% 0 6.25%;
+        margin-bottom: toRem(28);
+        gap: toRem(8) toRem(8);
+
+        &--category {
+            padding: 0;
+        }
+
+        &__item {
+            @include gapFallback(8px);
+
+            &-link {
+                line-height: 1.15;
+                padding: toRem(2) toRem(46);
+            }
+        }
+    }
+}
+
+@include min-screen(1366px) {
+    .tags {
+        padding: toRem(60) calc((100% - 1182px) / 2) 0  calc((100% - 1182px) / 2);
+        margin-bottom: toRem(28);
+        gap: toRem(8) toRem(8);
+
+        &--category {
+            padding: 0;
+        }
+
+        &__item {
+            @include gapFallback(8px);
+
+            &-link {
+                line-height: 1.15;
+                padding: toRem(8) toRem(46);
+
+                &:hover {
+                    color: $white;
+                    background-color: rgba(198, 5, 4, 0.7);
+                    transition: 0.2s $cubic;
+                }
+
+                &.active {
+                    color: $white;
+                    background-color: rgba(198, 5, 4, 0.9);
+                }
+            }
+        }
+    }
+}

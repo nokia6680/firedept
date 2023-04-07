@@ -1,0 +1,118 @@
+.rating {
+    @include flex-setting(row, flex-start, center);
+    width: auto;
+    margin-right: 3.571428%;
+    cursor: pointer;
+
+    &--static {
+        &.--worst {
+            .rating__star {
+                &[data-rating="1"] {
+                    path {
+                        fill: #C60504;
+                    }
+                }
+            }
+        }
+
+        &.--bad {
+            .rating__star {
+                &[data-rating="1"],
+                &[data-rating="2"] {
+                    path {
+                        fill: #C60504;
+                    }
+                }
+            }
+        }
+
+        &.--average {
+            .rating__star {
+                &[data-rating="1"],
+                &[data-rating="2"],
+                &[data-rating="3"] {
+                    path {
+                        fill: #C60504;
+                    }
+                }
+            }
+        }
+
+        &.--good {
+            .rating__star {
+                &[data-rating="1"],
+                &[data-rating="2"],
+                &[data-rating="3"],
+                &[data-rating="4"] {
+                    path {
+                        fill: #C60504;
+                    }
+                }
+            }
+        }
+
+        &.--excellent {
+            .rating__star {
+                &[data-rating] {
+                    path {
+                        fill: #C60504;
+                    }
+                }
+            }
+        }
+    }
+
+    &:hover {
+        .rating__star path {
+            fill: #fff !important;
+        }
+    }
+
+    &__star {
+        path {
+            fill: #fff;
+        }
+
+        &:hover ~ .rating__star {
+            path {
+                fill: #fff !important;
+            }
+        }
+    }
+
+    &[data-rating] {
+        .rating__star path {
+            fill: #C60504;
+        }
+    }
+
+    &[data-rating="1"] {
+        .rating__star:nth-child(1) ~ .rating__star path {
+            fill: #fff;
+        }
+    }
+
+    &[data-rating="2"] {
+        .rating__star:nth-child(2) ~ .rating__star path {
+            fill: #fff;
+        }
+    }
+
+    &[data-rating="3"] {
+        .rating__star:nth-child(3) ~ .rating__star path {
+            fill: #fff;
+        }
+    }
+
+    &[data-rating="4"] {
+        .rating__star:nth-child(4) ~ .rating__star path {
+            fill: #fff;
+        }
+    }
+
+    &[data-rating="5"] {
+        .rating__star:nth-child(5) ~ .rating__star path {
+            fill: #fff;
+        }
+    }
+}

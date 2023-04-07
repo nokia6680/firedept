@@ -1,0 +1,352 @@
+.popup-review {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding-top: toRem(20);
+    padding-bottom: toRem(20);
+
+    @include flex-setting(column, flex-start, center);
+    background-color: rgba(0, 0, 0, 0.66);
+    display: none;
+    z-index: 999;
+
+    &.is-active {
+        display: flex;
+    }
+
+    &__wrapper {
+        position: relative;
+        width: calc(100% - 40px);
+        height: auto;
+        @include flex-setting(column, flex-start, center);
+
+        background-color: $white;
+
+        padding: toRem(44) toRem(12) toRem(52) toRem(12);
+        border-radius: toRem(15);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    &__closer {
+        @include flex-setting(column, center, center);
+        width: toRem(12);
+        height: toRem(12);
+        border: none;
+        padding: 0;
+        background-color: transparent;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url("data:image/svg+xml,%3Csvg width='11' height='11' viewBox='0 0 11 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L10 10.2936' stroke='%23BEBEBE' stroke-width='2' stroke-miterlimit='10'/%3E%3Cpath d='M10 1L1 10.2936' stroke='%23BEBEBE' stroke-width='2' stroke-miterlimit='10'/%3E%3C/svg%3E");
+
+        position: absolute;
+        top: toRem(16);
+        right: toRem(16);
+
+        cursor: pointer;
+
+        z-index: 12;
+    }
+
+    &__title {
+        @include font-setting($primary-font, toRem(18), 1.1666667, 500, $black);
+        @include fluidFontSize(1.125rem, 1.5625rem, 20rem, 85.3125rem, 1.125rem);
+
+        margin-bottom: toRem(18);
+    }
+
+    &__rate {
+        width: 100%;
+        @include flex-setting(row, flex-start, center);
+
+        margin-bottom: toRem(15);
+
+        &-text {
+            @include font-setting($primary-font, toRem(14), toRem(16), 400, rgba(0, 0, 0, 0.6));
+            margin-right: toRem(8);
+        }
+    }
+
+    &__form {
+        width: 100%;
+        @include flex-setting(column, flex-start, center);
+    }
+
+    &__list {
+        width: 100%;
+        @include flex-setting(column, flex-start, center);
+        margin-bottom: toRem(18);
+    }
+
+    &__item {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+        margin-bottom: toRem(13);
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    &__label {
+        @include font-setting($primary-font, toRem(14), toRem(16), 400, $black);
+        margin-bottom: toRem(6);
+        cursor: pointer;
+    }
+
+    &__input {
+        width: 100%;
+        background-color: transparent;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: toRem(5);
+        @include font-setting($primary-font, toRem(14), toRem(16), 400, rgba(0, 0, 0, 0.4));
+
+        padding: toRem(14) toRem(14);
+        cursor: text;
+        &:invalid {
+            border-color: $red;
+        }
+    }
+
+    &__textarea {
+        width: 100%;
+        background-color: transparent;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: toRem(5);
+        @include font-setting($primary-font, toRem(14), toRem(16), 400, rgba(0, 0, 0, 0.4));
+        cursor: text;
+        padding: toRem(14) toRem(14);
+        resize: none;
+        min-height: toRem(150);
+
+        &:invalid {
+            border-color: $red;
+        }
+    }
+
+    &__block {
+        width: 100%;
+        margin-bottom: toRem(22);
+    }
+
+    &__label {
+        span {
+            color: $red;
+        }
+    }
+
+    &__checkbox {
+        display: none;
+    }
+
+    &__checkbox + label {
+        width: 100%;
+        display: inline-block;
+        position: relative;
+        padding-left: toRem(26);
+    }
+
+    &__checkbox + label::before {
+        position: absolute;
+        content: '';
+
+        width: toRem(17);
+        height: toRem(17);
+
+        background-color: transparent;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 2px;
+
+        top: 0;
+        left: 0;
+    }
+
+    &__checkbox:checked + label::after {
+        position: absolute;
+        content: '';
+
+        width: toRem(17);
+        height: toRem(17);
+
+        background-color: $red;
+        border: 1px solid $red;
+        border-radius: 2px;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-image: url("data:image/svg+xml,%3Csvg width='14' height='12' viewBox='0 0 14 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.02758 4.41335L5.64532 9.81488L12.3346 0.856435' stroke='white' stroke-width='2'/%3E%3C/svg%3E");
+        background-size: contain;
+        top: 0;
+        left: 0;
+    }
+
+    &__checkbox:invalid + label::before {
+        border-color: $red;
+    }
+
+
+    &__note {
+        @include font-setting($primary-font, toRem(14), toRem(16), 400, $black);
+        align-self: flex-start;
+        margin-bottom: toRem(10);
+
+        span {
+            color: $red;
+        }
+    }
+
+    &__agree {
+        @include font-setting($primary-font, toRem(12), toRem(14), 400, rgba(0, 0, 0, 0.6));
+        text-align: left;
+    }
+
+    &__submit {
+        width: 100%;
+        @include flex-setting(column, center, center);
+        @include font-setting($secondary-font, toRem(16), toRem(20), 700, $white);
+
+        padding: toRem(11) 0;
+        border-radius: toRem(10);
+        background-color: $red;
+
+        border: none;
+        cursor: pointer;
+        transition: 0.2s $cubic;
+
+        &:active {
+            background-color: rgba(198, 5, 4, 0.79);
+            transition: 0.2s $cubic;
+        }
+    }
+}
+
+@include min-screen(1366px) {
+    .popup-review {
+        position: relative;
+        width: 100%;
+        height: auto;
+
+        top: auto;
+        left: auto;
+        bottom: auto;
+        right: auto;
+        padding: 0;
+        background-color: transparent;
+        display: flex;
+
+        &__wrapper {
+            width: 100%;
+            display: grid;
+            grid-template-columns: toRem(266) 1fr;
+            grid-column-gap: toRem(50);
+            grid-template-rows: minmax(10px, min-content);
+            justify-content: space-between;
+            align-items: start;
+            background-color: transparent;
+
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        &__closer {
+            display: none;
+        }
+
+        &__title {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+
+        &__rate {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+            margin-bottom: 0;
+
+            &-text {
+                font-size: toRem(16);
+                line-height: toRem(18);
+                margin-right: toRem(14);
+            }
+        }
+
+        &__form {
+            grid-column: 2 / 3;
+            grid-row: 1 / 3;
+            display: grid;
+            grid-template-columns: toRem(312) toRem(420);
+            grid-column-gap: toRem(40);
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        &__list {
+            grid-column: 1 / 3;
+            grid-row: 1 / 2;
+            display: grid;
+            grid-template-columns: toRem(312) toRem(420);
+            grid-column-gap: toRem(40);
+            margin-bottom: toRem(26);
+            align-items: stretch;
+        }
+
+        &__item {
+            &:first-of-type {
+                grid-column: 1 / 2;
+                grid-row: 1 / 2;
+            }
+
+            &:nth-of-type(2) {
+                align-self: end;
+                grid-column: 1 / 2;
+                grid-row: 2 / 3;
+                margin-bottom: 0;
+            }
+
+            &:last-of-type {
+                grid-column: 2 / 3;
+                grid-row: 1 / 3;
+                margin-bottom: 0;
+            }
+        }
+
+        &__input {
+            background-color: $white;
+        }
+
+        &__textarea {
+            background-color: $white;
+        }
+
+        &__block {
+            width: 100%;
+            margin-bottom: toRem(22);
+            grid-column: 2 / 3;
+        }
+
+        &__note {
+            margin-bottom: 0;
+        }
+
+        &__agree {
+            cursor: pointer;
+        }
+
+        &__submit {
+            justify-self: end;
+            grid-column: 2 / 3;
+            max-width: toRem(226);
+
+            transition: 0.2s $cubic;
+
+            &:hover {
+                background-color: #A20605;
+                transition: 0.2s $cubic;
+            }
+        }
+    }
+}

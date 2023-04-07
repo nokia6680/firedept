@@ -1,0 +1,151 @@
+.news {
+    width: 100%;
+
+    @include flex-setting(column, flex-start, flex-start);
+
+    padding: toRem(16) 6.25% 0 6.25%;
+    margin-bottom: toRem(16);
+
+    position: relative;
+
+    &__head {
+        width: 100%;
+        @include flex-setting(row, flex-start, center);
+        margin-bottom: toRem(20);
+    }
+
+    &__title {
+        margin-right: toRem(10);
+        margin-bottom: 0;
+    }
+
+    &__list {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+    }
+
+    &__item {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+
+        margin-bottom: toRem(12);
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        &:hover {
+            .news__name {
+                color: $red;
+                transition: 0.2s $cubic;
+            }
+        }
+    }
+
+    &__time {
+        @include font-setting($primary-font, toRem(14), toRem(16), 400, rgba(0, 0, 0, 0.5));
+        margin-bottom: toRem(8);
+    }
+
+    &__name {
+        @include font-setting($primary-font, toRem(18), toRem(21), 700, $black);
+        text-decoration: none;
+        text-align: left;
+        margin-bottom: toRem(10);
+        transition: 0.2s $cubic;
+    }
+
+    &__description {
+        @include font-setting($primary-font, toRem(16), toRem(18), 400, $black);
+        text-align: left;
+    }
+
+    &__link {
+        width: auto;
+        @include flex-setting(row, flex-start, center);
+        @include font-setting($primary-font, toRem(12), 1.166667, 400, rgba(0, 0, 0, 0.5));
+        @include fluidFontSize(0.75rem, 1rem, 20rem, 85.3125rem, 0.75rem);
+        text-decoration: none;
+        position: relative;
+        white-space: nowrap;
+
+        &-icon {
+            display: block;
+            width: toRem(21);
+            height: toRem(8);
+
+            background-image: url("data:image/svg+xml,%3Csvg width='36' height='8' viewBox='0 0 36 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M35.3536 4.35356C35.5488 4.15829 35.5488 3.84171 35.3536 3.64645L32.1716 0.464469C31.9763 0.269207 31.6597 0.269207 31.4645 0.464469C31.2692 0.659731 31.2692 0.976313 31.4645 1.17158L34.2929 4L31.4645 6.82843C31.2692 7.02369 31.2692 7.34027 31.4645 7.53554C31.6597 7.7308 31.9763 7.7308 32.1716 7.53554L35.3536 4.35356ZM-4.37114e-08 4.5L35 4.5L35 3.5L4.37114e-08 3.5L-4.37114e-08 4.5Z' fill='%23C60504'/%3E%3C/svg%3E");
+            background-position: center right;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: max-width 0.3s $cubic;
+
+            margin-left: toRem(8);
+        }
+
+        &:active {
+            .news__link-icon {
+                width: toRem(35);
+                max-width: toRem(35);
+                transition: max-width  0.3s $cubic;
+            }
+        }
+    }
+}
+
+@include min-screen(768px) {
+    .news {
+        padding: 0 6.25%;
+        margin-bottom: toRem(72);
+
+        &__head {
+            margin-bottom: toRem(40);
+        }
+
+        &__title {
+            margin-right: toRem(18);
+        }
+
+        &__list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: toRem(20);
+            grid-row-gap: toRem(32);
+            justify-content: center;
+            align-items: start;
+        }
+
+        &__item {
+            margin-bottom: 0;
+        }
+
+        &__link {
+            &-icon {
+                width: toRem(35);
+                margin-left: toRem(8);
+            }
+
+            &:active {
+                .news__link-icon {
+                    width: toRem(54);
+                    max-width: toRem(54);
+                }
+            }
+        }
+    }
+}
+
+@include min-screen(1366px) {
+    .news {
+        --width: calc(100% - 1182px);
+        padding-left: calc(var(--width) / 2);
+        padding-right: calc(var(--width) / 2);
+
+        &__list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-column-gap: toRem(20);
+            grid-row-gap: 0;
+        }
+    }
+}

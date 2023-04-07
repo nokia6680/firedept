@@ -1,0 +1,164 @@
+include ../helpers/mixins
+block variables
+
+doctype html
+html(lang="ru-RU")
+    head
+        meta(charset="utf-8")
+        title #{title}
+        <!--[if IE]>
+        meta(http-equiv='X-UA-Compatible', content="IE = edge")
+        <![endif]-->
+        meta(name="viewport" content="width=device-width,initial-scale=1")
+        meta(name="keywords" content="")
+        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous")
+        link(rel="stylesheet" type='text/css' href="static/css/styles.css")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet")
+    body.body
+        include ../modules/header/header
+
+        main.main.main--white
+            section.catalog.catalog--category
+                ul.breadcrumbs.breadcrumbs--category
+                    +breadcrumbsItem('Главная', 'index.html')
+                    +breadcrumbsItem('Каталог', 'catalog.html')
+                    +breadcrumbsItem('Категория')
+                ul.tags.tags--category
+                    li.tags__item
+                        a(href="" target="_self").tags__item-link Огнетушители
+                    li.tags__item
+                        a(href="" target="_self").tags__item-link Песок
+                    li.tags__item
+                        a(href="" target="_self").tags__item-link Пена
+                    li.tags__item
+                        a(href="" target="_self").tags__item-link Шлемы
+                    li.tags__item
+                        a(href="" target="_self").tags__item-link Защита
+                    li.tags__item
+                        a(href="" target="_self").tags__item-link Топоры
+                    li.tags__item
+                        a(href="" target="_self").tags__item-link Шланг
+                    li.tags__item
+                        a(href="" target="_self").tags__item-link Датчик
+                    li.tags__item
+                        a(href="" target="_self").tags__item-link Дым
+                .catalog__sort.sort
+                    button(type="button").sort__title Сначала популярные
+                    ul.sort__list
+                        li.sort__item
+                            input(type="radio" id="sort-1" name="sorting" value="sort-1").sort__radio
+                            label(for="sort-1").sort__label Сначала популярные
+                        li.sort__item
+                            input(type="radio" id="sort-2" name="sorting" value="sort-2").sort__radio
+                            label(for="sort-2").sort__label Сначала новинки
+                        li.sort__item
+                            input(type="radio" id="sort-3" name="sorting" value="sort-3").sort__radio
+                            label(for="sort-3").sort__label Сначала дороже
+                        li.sort__item
+                            input(type="radio" id="sort-4" name="sorting" value="sort-4").sort__radio
+                            label(for="sort-4").sort__label Сначала дешевле
+                <!--Catalog filter-->
+                aside.catalog__filter.filter
+                    .filter__head
+                        button(type="reset").filter__btn Сбросить
+                        h3.filter__title Фильтры
+                        button(type="submit").filter__btn.js-filter-closer Готово
+                    .filter__body
+                        details(open).filter__item
+                            summary.filter__name
+                                span Тема
+                                span.filter__name-arr
+                            ul.filter__inner
+                                li.filter__inner-item
+                                    input(type="checkbox" name="theme-name-1" id="theme-1-1").filter__inner-input
+                                    label(for="theme-1-1").filter__inner-label Наименование
+                                li.filter__inner-item
+                                    input(type="checkbox" name="theme-name-2" id="theme-1-2").filter__inner-input
+                                    label(for="theme-1-2").filter__inner-label Наименование
+                                li.filter__inner-item
+                                    input(type="checkbox" name="theme-name-3" id="theme-1-3").filter__inner-input
+                                    label(for="theme-1-3").filter__inner-label Наименование
+                        details.filter__item
+                            summary.filter__name
+                                span Тема
+                                span.filter__name-arr
+                            ul.filter__inner
+                                li.filter__inner-item
+                                    input(type="checkbox" name="theme-name-1" id="theme-2-1").filter__inner-input
+                                    label(for="theme-2-1").filter__inner-label Наименование
+                                li.filter__inner-item
+                                    input(type="checkbox" name="theme-name-2" id="theme-2-2").filter__inner-input
+                                    label(for="theme-2-2").filter__inner-label Наименование
+                                li.filter__inner-item
+                                    input(type="checkbox" name="theme-name-3" id="theme-2-3").filter__inner-input
+                                    label(for="theme-2-3").filter__inner-label Наименование
+                        .filter__item.filter__item--range
+                            p.filter__name Цена
+                            .filter__range-slider
+                                input(type="text" class="js-range-slider" value="")
+                            .filter__range-controls
+                                .filter__range-wrap
+                                    span от
+                                    input(type="text" class="filter__range-input js-input-from" value="0")
+                                .filter__range-wrap
+                                    span до
+                                    input(type="text" class="filter__range-input js-input-to" value="0")
+                                    
+                        details.filter__item
+                            summary.filter__name
+                                span Тема
+                                span.filter__name-arr
+                            ul.filter__inner
+                                li.filter__inner-item
+                                    input(type="checkbox" name="theme-name-1" id="theme-3-1").filter__inner-input
+                                    label(for="theme-3-1").filter__inner-label Наименование
+                                li.filter__inner-item
+                                    input(type="checkbox" name="theme-name-2" id="theme-3-2").filter__inner-input
+                                    label(for="theme-3-2").filter__inner-label Наименование
+                                li.filter__inner-item
+                                    input(type="checkbox" name="theme-name-3" id="theme-3-3").filter__inner-input
+                                    label(for="theme-3-3").filter__inner-label Наименование
+                                li.filter__inner-item
+                                    input(type="checkbox" name="theme-name-1" id="theme-3-4").filter__inner-input
+                                    label(for="theme-3-4").filter__inner-label Наименование
+                                li.filter__inner-item
+                                    input(type="checkbox" name="theme-name-2" id="theme-3-5").filter__inner-input
+                                    label(for="theme-3-5").filter__inner-label Наименование
+                                li.filter__inner-item
+                                    input(type="checkbox" name="theme-name-3" id="theme-3-6").filter__inner-input
+                                    label(for="theme-3-6").filter__inner-label Наименование
+                    button(type="submit").filter__submit Показать
+                    button(type="reset").filter__reset Сбросить фильтр
+                .catalog__wrap
+                    ul.catalog__list
+                        +item('catalog__item single', 'Огнетушитель углекислотный ОУ-5', 'hsn', 'В наличии', 'inStock', '3000 р', '', 'itemcard.html', 'item-1')
+                        +item('catalog__item ', 'Огнетушитель углекислотный ОУ-5', 'hs', 'В наличии', 'inStock', '3000 р', '4000 р', 'itemcard.html', 'item-1')
+                        +item('catalog__item notInStock', 'Огнетушитель Огнетушитель Огнетушитель углекислотный ОУ-5', 'hn', 'Нет в наличии', 'notInStock', '3000 р', '4000 р', 'itemcard.html', 'item-1')
+                        +item('catalog__item', 'Огнетушитель Огнетушитель Огнетушитель Огнетушитель углекислотный ОУ-5', 'hn', 'Нет в наличии', 'notInStock', '3000 р', '4000 р', 'itemcard.html', 'item-1')
+                        +item('catalog__item', 'Огнетушитель углекислотный ОУ-5', 'hsn', 'В наличии', 'inStock', '3000 р', '4000 р', 'itemcard.html', 'item-1')
+                        +item('catalog__item', 'Огнетушитель углекислотный ОУ-5', 'hs', 'В наличии', 'inStock', '3000 р', '4000 р', 'itemcard.html', 'item-1')
+
+                    include ../modules/blocks/pagination
+                article.text-block.text-block--inner
+                    h2.text-block__title.section-title Заголовок
+                    .text-block__wrap
+                        p.text-block__description Забота о пожарной безопасности является важнейшей задачей, которая требует внимания со стороны любой организации. Оборудованием, помогающим в ее решении, являются пожарные шкафы. Данные шкафы позволяют хранить такие средства первоначальной борьбы с огнем, как пожарные рукава, огнетушители. Изделия ориентированы на использование в жилых и общественных зданиях, а также на производствах.
+                        button(type="button").text-block__expand
+                            span Ещё
+                            span.text-block__expand-icon
+            include ../modules/blocks/offers
+        include ../modules/footer/footer
+        include ../modules/popup/cat-popup
+        include ../modules/blocks/popup-callback
+        include ../modules/blocks/popup-reaction
+        include ../modules/blocks/popup-fast
+        include ../modules/blocks/popup-claim
+        button(type="button").open-filter Фильтры
+        script(src="static/js/libs.js")
+        script(src="static/js/main.js")
+        script(src="static/js/catalog.js")
+        script(src="static/js/range.js")
+        script(src="static/js/main-slider.js")
+        block script

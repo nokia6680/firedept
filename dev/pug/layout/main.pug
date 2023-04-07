@@ -1,0 +1,45 @@
+include ../helpers/mixins
+block variables
+
+doctype html
+html(lang="ru-RU")
+    head
+        meta(charset="utf-8")
+        title #{title}
+        <!--[if IE]>
+        meta(http-equiv='X-UA-Compatible', content="IE = edge")
+        <![endif]-->
+        meta(name="viewport" content="width=device-width,initial-scale=1")
+        meta(name="keywords" content="")
+        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous")
+        link(rel="stylesheet" type='text/css' href="static/css/styles.css")
+        link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.css")
+        script(src="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.min.js")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet")
+    body.body
+        include ../modules/header/header
+
+        main.main
+            include ../modules/blocks/intro
+            include ../modules/blocks/about
+            include ../modules/blocks/service
+            include ../modules/blocks/offers
+            include ../modules/blocks/latest
+            include ../modules/blocks/sales
+            include ../modules/blocks/news
+            include ../modules/blocks/reviews
+            include ../modules/blocks/clients
+        include ../modules/footer/footer
+        include ../modules/popup/cat-popup
+        include ../modules/blocks/popup-callback
+        include ../modules/blocks/popup-reaction
+        include ../modules/blocks/popup-fast
+        include ../modules/blocks/popup-claim
+        //script(src="static/js/vendor/jquery-3.3.1.min.js")
+        script(src="static/js/libs.js")
+        script(src="static/js/main.js")
+        script(src="static/js/counter.js")
+        script(src="static/js/main-slider.js")
+        block script

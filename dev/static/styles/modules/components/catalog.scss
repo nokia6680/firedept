@@ -1,0 +1,170 @@
+.catalog {
+    width: 100%;
+    @include flex-setting(column, flex-start, flex-start);
+
+    padding: toRem(20) 6.25%;
+    margin-bottom: toRem(38);
+
+    &--category {
+        padding-top: toRem(20);
+
+        .catalog__wrap {
+            width: 100%;
+            @include flex-setting(column, flex-start, flex-start);
+            margin-bottom: toRem(20);
+        }
+
+        .catalog__list {
+            margin-top: 0;
+            grid-template-columns: 48.9285714% 48.9285714%;
+            grid-column-gap: 2.1428571%;
+            grid-row-gap: toRem(6);
+        }
+    }
+
+    &__title {
+        margin-bottom: toRem(20);
+    }
+
+    &__list {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 48.2142857142% 48.2142857142%;
+        grid-column-gap: 3.5714285714%;
+        grid-row-gap: toRem(10);
+        justify-content: start;
+        align-items: center;
+
+        margin-bottom: toRem(20);
+    }
+
+    &__item {
+        width: 100%;
+        @include flex-setting(column, flex-start, center);
+
+        background: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+    }
+
+    &__link {
+        width: 100%;
+        @include flex-setting(column, flex-start, center);
+        text-decoration: none;
+        padding: toRem(8) toRem(10) toRem(12) toRem(10);
+    }
+
+    &__frame {
+        @include flex-setting(column, center, center);
+        @include box(80.8%);
+        margin-bottom: toRem(8);
+    }
+
+    &__name {
+        @include font-setting($primary-font, toRem(12), 1.16666, 500, $black);
+        @include fluidFontSize(0.75rem, 1.25rem, 20rem, 85.3125rem, 0.75rem);
+        text-align: center;
+    }
+}
+
+@include min-screen(768px) {
+    .catalog {
+        margin-bottom: toRem(72);
+
+        &--category {
+            .catalog__list {
+                grid-template-columns: repeat(auto-fill, 273px);
+                grid-auto-flow: dense;
+                grid-column-gap: toRem(30);
+                grid-row-gap: toRem(40);
+                justify-content: start;
+                align-items: stretch;
+            }
+        }
+
+        &__list {
+            grid-template-columns: repeat(auto-fill, 273px);
+            grid-auto-flow: dense;
+            grid-column-gap: toRem(30);
+            grid-row-gap: toRem(40);
+            justify-content: start;
+            align-items: stretch;
+
+            margin-bottom: toRem(38);
+        }
+
+        &__link {
+            padding: toRem(28) toRem(13) toRem(22) toRem(13);
+        }
+
+        &__frame {
+            @include box(100%);
+            margin-bottom: toRem(36);
+        }
+
+        &__name {
+            line-height: 1.15;
+        }
+    }
+}
+
+@include min-screen(1366px) {
+    .catalog {
+        padding: 0 calc((100% - 1182px) / 2);
+
+        &__item {
+            transition: 0.3s $cubic;
+            transform-origin: center;
+
+            &:hover {
+                transform: scale(1.0285);
+                transform-origin: center;
+                transition: 0.3s $cubic;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            }
+        }
+
+        &--category {
+            display: grid;
+            grid-template-columns: toRem(238) 1fr;
+            grid-column-gap: toRem(40);
+            grid-row-gap: 0;
+            justify-content: start;
+            align-items: ы;
+
+            padding-top: toRem(30);
+
+            .filter {
+                grid-column: 1 / 2;
+                grid-row: 2 / 5;
+            }
+
+            .sort {
+                grid-column: 1 / 2;
+                grid-row: 1 / 2;
+            }
+
+            .breadcrumbs {
+                grid-column: 2 / 3;
+                grid-row: 1 / 2;
+            }
+
+            .tags {
+                grid-column: 2 / 3;
+                grid-row: 2 / 3;
+            }
+
+            .catalog__wrap {
+                grid-column: 2 / 3;
+                grid-row: 3 / 4;
+                @include flex-setting(column, flex-start, flex-start);
+            }
+
+            .catalog__list {
+                grid-template-columns: repeat(auto-fill, 273px);
+                grid-auto-flow: dense;
+                grid-column-gap: toRem(30);
+                grid-row-gap: toRem(40);
+            }
+        }
+    }
+}

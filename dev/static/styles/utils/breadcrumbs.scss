@@ -1,0 +1,76 @@
+.breadcrumbs {
+    list-style: none;
+    display: flex;
+    padding: toRem(20) 6.25% 0 6.25%;
+
+    width: 100%;
+
+    @include flex-setting(row, flex-start, center);
+    flex-wrap: wrap;
+    margin-bottom: toRem(0);
+    z-index: 0;
+
+    &--category {
+        padding: 0;
+        margin-bottom: toRem(16);
+    }
+
+    & > * {
+        &:not(:last-child) {
+            margin-right: 2.85714%;
+            position: relative;
+        }
+    }
+
+    &__item {
+        display: inline-flex;
+        height: auto;
+        white-space: nowrap;
+    }
+
+    &__link {
+        @include font-setting($primary-font, toRem(12), 1.1666, 400, rgba(0, 0, 0, 0.53));
+        @include fluidFontSize(0.75rem, 1rem, 20rem, 85.3125rem, 0.75rem);
+        text-decoration: none;
+
+        &:active {
+            color: $red;
+        }
+    }
+
+    &__text {
+        @include font-setting($primary-font, toRem(12), 1.1666, 400, $black);
+        @include fluidFontSize(0.75rem, 1rem, 20rem, 85.3125rem, 0.75rem);
+    }
+}
+
+@include min-screen(768px) {
+    .breadcrumbs {
+        padding-top: toRem(22);
+        margin-bottom: toRem(22);
+
+        & > * {
+            &:not(:last-child) {
+                margin-right: 3.5714285%;
+            }
+        }
+
+        &__link {
+            line-height: 1.15;
+        }
+
+        &__text {
+            line-height: 1.15;
+        }
+    }
+}
+
+@include min-screen(1366px) {
+    .breadcrumbs {
+        padding: toRem(22) calc((100% - 1182px) / 2) 0 calc((100% - 1182px) / 2);
+
+        &--category {
+            padding: 0;
+        }
+    }
+}

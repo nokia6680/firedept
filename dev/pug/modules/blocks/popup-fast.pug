@@ -1,0 +1,40 @@
+.popup-fast
+    .popup-fast__wrapper
+        button(type="button").popup-fast__closer
+        h3.popup-fast__title Быстрое оформление заказа
+        
+        .popup-fast__head
+            .popup-fast__line
+                span.popup-fast__line-text Модель:
+                b.popup-fast__line-name Огнетушитель
+            .popup-fast__line
+                span.popup-fast__line-text Цена:
+                b.popup-fast__line-nr 5 000
+                .popup-fast__counter
+                    input(value="1").popup-fast__counter-input
+                    .popup-fast__counter-wrap
+                        button.popup-fast__counter-btn(data-direction="plus") +
+                        button.popup-fast__counter-btn(data-direction="minus") -
+            .popup-fast__line
+                span.popup-fast__line-text Итог:
+                b.popup-fast__line-nr 25 000
+        form(method="" action="").popup-fast__form
+            ul.popup-fast__list
+                li.popup-fast__item
+                    label(for="fast-name").popup-fast__label Ваше имя
+                        span *
+                    input(type="text" name="fast-name" id="fast-name" placeholder="Имя").popup-fast__input
+                li.popup-fast__item
+                    label(for="fast-tel").popup-fast__label Ваш телефон
+                        span *
+                    input(type="tel" name="fast-tel" id="fast-tel" placeholder="+7 903 999 99 99").popup-fast__input
+                li.popup-fast__item
+                    label(for="fast-content").popup-fast__label Текст отзыва
+                    textarea(name="fast-text" id="fast-content").popup-fast__textarea
+            span.popup-fast__note 
+                span * 
+                | Обязательно к заполнению
+            .popup-fast__block
+                input(type="checkbox" name="fast-agree" id="fast-agree").popup-fast__checkbox
+                label(for="fast-agree").popup-fast__agree Вы соглашаетесь на обработку персональных данных с Политикой конфиденциальности компании
+            button(type="button").popup-fast__submit Оформить заказ

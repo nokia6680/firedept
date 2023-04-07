@@ -1,0 +1,67 @@
+include ../helpers/mixins
+block variables
+
+doctype html
+html(lang="ru-RU")
+    head
+        meta(charset="utf-8")
+        title #{title}
+        <!--[if IE]>
+        meta(http-equiv='X-UA-Compatible', content="IE = edge")
+        <![endif]-->
+        meta(name="viewport" content="width=device-width,initial-scale=1")
+        meta(name="keywords" content="")
+        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous")
+        link(rel="stylesheet" type='text/css' href="static/css/styles.css")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet")
+    body.body
+        include ../modules/header/header
+        main.main
+            ul.breadcrumbs
+                +breadcrumbsItem('Главная', 'index.html')
+                +breadcrumbsItem('Отгрузки', 'shipping.html')
+                +breadcrumbsItem('Ремонт спецтехники на выезде')
+            section.article
+                h1.article__title.title Ремонт спецтехники на выезде
+                h2.article__name Подзаголовок еще один
+                <!--Text block-->
+                .article__block
+                    h3.article__subtitle Подзаголовок
+                    p.article__text Мы рады вам предложить полный спектр ремонтных услуг, предназначенный для приведения в технически исправное состояние всех видов спецтехники как отечественного, так и импортного производства. Перечень осуществляемых нами услуг не ограничивается ремонтными мероприятиями. Мы можем вам предложить консультацию высококлассного специалиста, подбор наиболее оптимального варианта запасной части или элемента конструкции машины, ремонт спецтехники на выезде.
+                    p.article__text Мы рады вам предложить полный спектр ремонтных услуг, предназначенный для приведения в технически исправное состояние всех видов спецтехники как отечественного, так и импортного производства. Перечень осуществляемых нами услуг не ограничивается ремонтными мероприятиями. Мы можем вам предложить консультацию высококлассного специалиста, подбор наиболее оптимального варианта запасной части или элемента конструкции машины, ремонт спецтехники на выезде.
+                <!--Gallery block-->
+                .article__gallery
+                    picture.article__frame
+                        source(media="(min-width: 1366px)" srcset="static/images/content/article-1.webp" type="image/webp")
+                        source(media="(min-width: 1366px)" srcset="static/images/content/article-1.png")
+                        source(srcset="static/images/content/article-1-mb.webp" type="image/webp")
+                        img(src="static/images/content/article-1-mb.png" width="" height="" alt="").article__frame-image
+                    picture.article__frame
+                        source(media="(min-width: 1366px)" srcset="static/images/content/article-2.webp" type="image/webp")
+                        source(media="(min-width: 1366px)" srcset="static/images/content/article-2.png")
+                        source(srcset="static/images/content/article-2-mb.webp" type="image/webp")
+                        img(src="static/images/content/article-2-mb.png" width="" height="" alt="").article__frame-image
+                <!--List-->
+                ul
+                    li
+                        p.article__text Мы рады вам предложить полный спектр р
+                    li
+                        p.article__text Мы рады вам предложить полный спектр р
+                    li
+                        p.article__text Мы рады вам предложить полный спектр р
+                    li
+                        p.article__text Мы рады вам предложить полный спектр р
+                button(type="button").article__btn.js-order Оставить заявку
+        include ../modules/footer/footer
+        include ../modules/blocks/popup-claim
+        include ../modules/popup/cat-popup
+        include ../modules/blocks/popup-callback
+        include ../modules/blocks/popup-reaction
+        include ../modules/blocks/popup-fast
+        include ../modules/blocks/popup-claim
+        script(src="static/js/libs.js")
+        script(src="static/js/main.js")
+        script(src="static/js/counter.js")
+        block script

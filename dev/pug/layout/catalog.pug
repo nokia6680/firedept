@@ -1,0 +1,68 @@
+include ../helpers/mixins
+block variables
+
+doctype html
+html(lang="ru-RU")
+    head
+        meta(charset="utf-8")
+        title #{title}
+        <!--[if IE]>
+        meta(http-equiv='X-UA-Compatible', content="IE = edge")
+        <![endif]-->
+        meta(name="viewport" content="width=device-width,initial-scale=1")
+        meta(name="keywords" content="")
+        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous")
+        link(rel="stylesheet" type='text/css' href="static/css/styles.css")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet")
+    body.body
+        include ../modules/header/header
+
+        main.main.main--white
+            ul.breadcrumbs
+                +breadcrumbsItem('Главная', 'index.html')
+                +breadcrumbsItem('Каталог')
+            ul.tags
+                li.tags__item
+                    a(href="" target="_self").tags__item-link Огнетушители
+                li.tags__item
+                    a(href="" target="_self").tags__item-link Песок
+                li.tags__item
+                    a(href="" target="_self").tags__item-link Пена
+                li.tags__item
+                    a(href="" target="_self").tags__item-link Шлемы
+                li.tags__item
+                    a(href="" target="_self").tags__item-link Защита
+                li.tags__item
+                    a(href="" target="_self").tags__item-link Топоры
+                li.tags__item
+                    a(href="" target="_self").tags__item-link Шланг
+                li.tags__item
+                    a(href="" target="_self").tags__item-link Датчик
+                li.tags__item
+                    a(href="" target="_self").tags__item-link Дым
+                    
+            section.catalog
+                ul.catalog__list
+                    +itemSimple('', 'Огнетушитель углекислотный ОУ-5', 'category.html', 'catalog-1')
+                    +itemSimple('', 'Огнетушитель углекислотный ОУ-5', '#', 'catalog-1')
+                    +itemSimple('', 'Огнетушитель углекислотный ОУ-5', '#', 'catalog-1')
+                    +itemSimple('', 'Огнетушитель углекислотный ОУ-5', '#', 'catalog-1')
+                    +itemSimple('', 'Огнетушитель углекислотный ОУ-5', '#', 'catalog-1')
+                    +itemSimple('', 'Огнетушитель углекислотный ОУ-5', '#', 'catalog-1')
+                    
+                include ../modules/blocks/pagination
+            include ../modules/blocks/text-block
+            include ../modules/blocks/offers
+        include ../modules/footer/footer
+        include ../modules/popup/cat-popup
+        include ../modules/blocks/popup-callback
+        include ../modules/blocks/popup-reaction
+        include ../modules/blocks/popup-fast
+        include ../modules/blocks/popup-claim
+        //script(src="static/js/vendor/jquery-3.3.1.min.js")
+        script(src="static/js/main.js")
+        script(src="static/js/libs.js")
+        script(src="static/js/main-slider.js")
+        block script

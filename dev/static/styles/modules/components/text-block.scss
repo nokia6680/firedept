@@ -1,0 +1,101 @@
+.text-block {
+    width: 100%;
+    @include flex-setting(column, flex-start, flex-start);
+
+    padding: 0 6.25% toRem(40) 6.25%;
+
+    &--inner {
+        padding: 0;
+        margin-bottom: 0;
+    }
+
+    &__wrap {
+        width: 100%;
+        @include flex-setting(column, flex-start, flex-start);
+    }
+
+    &__description {
+        @include font-setting($primary-font, toRem(12), 1.166667, 400, $black);
+        @include fluidFontSize(0.75rem, 1.125rem, 20rem, 85.3125rem, 0.75rem);
+        text-align: left;
+
+        margin-bottom: toRem(4);
+    }
+
+    &__expand {
+        width: auto;
+        @include flex-setting(row, flex-start, center);
+        @include font-setting($primary-font, toRem(12), toRem(14), 400, rgba(0, 0, 0, 0.5));
+        text-decoration: none;
+        position: relative;
+        white-space: nowrap;
+
+        padding: 0;
+        background-color: transparent;
+        border: none;
+
+        &-icon {
+            display: block;
+            width: toRem(21);
+            height: toRem(8);
+
+            background-image: url("data:image/svg+xml,%3Csvg width='36' height='8' viewBox='0 0 36 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M35.3536 4.35356C35.5488 4.15829 35.5488 3.84171 35.3536 3.64645L32.1716 0.464469C31.9763 0.269207 31.6597 0.269207 31.4645 0.464469C31.2692 0.659731 31.2692 0.976313 31.4645 1.17158L34.2929 4L31.4645 6.82843C31.2692 7.02369 31.2692 7.34027 31.4645 7.53554C31.6597 7.7308 31.9763 7.7308 32.1716 7.53554L35.3536 4.35356ZM-4.37114e-08 4.5L35 4.5L35 3.5L4.37114e-08 3.5L-4.37114e-08 4.5Z' fill='%23C60504'/%3E%3C/svg%3E");
+            background-position: center right;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: max-width 0.3s $cubic;
+
+            margin-left: toRem(8);
+        }
+
+        &:active {
+            .text-block__expand-icon {
+                width: toRem(35);
+                max-width: toRem(35);
+                transition: max-width  0.3s $cubic;
+            }
+        }
+    }
+}
+
+@include min-screen(768px) {
+    .text-block {
+        padding: 0 6.25%;
+        margin-bottom: toRem(74);
+
+        &--inner {
+            padding: 0;
+            margin-bottom: 0;
+        }
+
+        &__title {
+            margin-bottom: toRem(40);
+        }
+
+        &__description {
+            line-height: 1.222222;
+            margin-bottom: toRem(10);
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+
+        &__expand {
+            display: none;
+        }
+    }
+}
+
+@include min-screen(1366px) {
+    .text-block {
+        padding: 0 calc((100% - 1182px) / 2);
+
+        &--inner {
+            grid-column: 2 / 3;
+            grid-row: 4 / 5;
+            padding: 0;
+            margin-bottom: 0;
+        }
+    }
+}

@@ -1,0 +1,135 @@
+.popup-reaction {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    @include flex-setting(column, center, center);
+    background-color: rgba(0, 0, 0, 0.66);
+    display: none;
+    z-index: 999;
+
+    &.is-active {
+        display: flex;
+    }
+
+    &__wrapper {
+        position: relative;
+        width: calc(100% - 40px);
+        max-width: toRem(576);
+        height: auto;
+        @include flex-setting(column, flex-start, center);
+
+        background-color: $white;
+        overflow: hidden;
+        border-radius: toRem(15);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    &__closer {
+        @include flex-setting(column, center, center);
+        width: toRem(12);
+        height: toRem(12);
+        border: none;
+        padding: 0;
+        background-color: transparent;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url("data:image/svg+xml,%3Csvg width='11' height='11' viewBox='0 0 11 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L10 10.2936' stroke='%23ffffff' stroke-width='2' stroke-miterlimit='10'/%3E%3Cpath d='M10 1L1 10.2936' stroke='%23ffffff' stroke-width='2' stroke-miterlimit='10'/%3E%3C/svg%3E");
+
+        position: absolute;
+        top: toRem(16);
+        right: toRem(16);
+
+        cursor: pointer;
+
+        z-index: 12;
+    }
+
+    &__upper {
+        width: 100%;
+        height: toRem(186);
+        @include flex-setting(column, center, center);
+        background-color: $red;
+
+        padding: toRem(40) 30% toRem(46) 30%;
+
+        position: relative;
+
+        &::after {
+            position: absolute;
+            content: '';
+
+            width: toRem(62);
+            height: toRem(39);
+            background-image: url("data:image/svg+xml,%3Csvg width='62' height='39' viewBox='0 0 62 39' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M31 39L0.689114 0.706228L61.3109 0.706223L31 39Z' fill='%23C60504'/%3E%3C/svg%3E%0A");
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: contain;
+
+            bottom: toRem(-20);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    &__bg {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    &__info {
+        width: 100%;
+        @include flex-setting(column, flex-start, center);
+
+        padding: toRem(38) 13.5714285% toRem(34) 13.5714285%;
+    }
+
+    &__title {
+        @include font-setting($primary-font, toRem(18), toRem(20), 500, $black);
+        @include fluidFontSize(1.125rem, 1.375rem, 20rem, 85.3125rem, 1.125rem);
+        text-align: center;
+        margin-bottom: toRem(18);
+    }
+
+    &__description {
+        @include font-setting($primary-font, toRem(14), 1.142857, 400, rgba(0, 0, 0, 0.6));
+        @include fluidFontSize(0.875rem, 1rem, 20rem, 85.3125rem, 0.875rem);
+        text-align: center;
+    }
+}
+
+@include min-screen(768px) {
+    .popup-reaction {
+        &__wrapper {
+            width: 100%;
+        }
+
+        &__closer {
+            width: toRem(18);
+            height: toRem(18);
+            top: toRem(32);
+            right: toRem(32);
+        }
+
+        &__upper {
+            height: toRem(220);
+
+            padding: toRem(54) toRem(220) toRem(46) toRem(220);
+
+            &::after {
+                bottom: toRem(-36);
+            }
+        }
+
+        &__info {
+            padding: toRem(54) 0 toRem(86) 0;
+        }
+    }
+}

@@ -1,0 +1,112 @@
+.intro {
+    width: 100%;
+
+    @include flex-setting(column, flex-start, flex-start);
+
+    padding: toRem(16) 6.25% toRem(34) 6.25%;
+
+    background-color: $red;
+
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        position: absolute;
+        content: '';
+
+        width: toRem(511);
+        height: toRem(277);
+
+        background-image: url('../images/content/intro-bg.png');
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        bottom: toRem(-26);
+        left: 59.375%;
+    }
+
+    &__logo {
+        display: none;
+    }
+
+    &__title {
+        @include font-setting($primary-font, toRem(20), 1.15, 500, $white);
+        @include fluidFontSize(1.25rem, 2.3125rem, 20rem, 85.3125rem, 1.25rem);
+        text-align: left;
+        max-width: 61.42857142857143%;
+    }
+
+    &__list {
+        display: none;
+    }
+}
+
+@include min-screen(768px) {
+    .intro {
+        padding-top: toRem(64);
+        padding-bottom: toRem(72);
+
+        &::after {
+            bottom: toRem(-10);
+        }
+
+        &__title {
+            line-height: 1.142857;
+            max-width: 61.42857142857143%;
+        }
+    }
+}
+
+@include min-screen(1366px) {
+    .intro {
+        padding-top: toRem(16);
+        padding-bottom: toRem(94);
+        --width: calc(100% - 1182px);
+        padding-left: calc(var(--width) / 2);
+        padding-right: calc(var(--width) / 2);
+
+        &__logo {
+            display: block;
+            object-fit: contain;
+            margin-bottom: toRem(38);
+        }
+
+        &::after {
+            background-image: url('../images/content/intro-bg-lg.png');
+            width: toRem(1043);
+            height: toRem(536);
+            bottom: toRem(0);
+            left: 50.93062605752961%;
+        }
+
+        &__title {
+            max-width: toRem(588);
+            margin-bottom: toRem(64);
+        }
+
+        &__list {
+            width: auto;
+            display: grid;
+            grid-template-columns: toRem(248) toRem(142) toRem(142);
+            grid-column-gap: toRem(28);
+            justify-content: start;
+            align-items: start;
+        }
+
+        &__item {
+            width: 100%;
+            @include flex-setting(column, flex-start, flex-start);
+        }
+
+        &__nr {
+            @include font-setting($primary-font, toRem(30), toRem(34.45), 700, $white);
+            margin-bottom: toRem(10);
+        }
+
+        &__description {
+            @include font-setting($primary-font, toRem(16), toRem(18.36), 700, $white);
+            text-align: left;
+        }
+    }
+}

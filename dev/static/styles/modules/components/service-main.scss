@@ -1,0 +1,74 @@
+.service-main {
+    width: 100%;
+
+    @include flex-setting(column, flex-start, flex-start);
+
+    padding: toRem(8) 6.25% toRem(40) 6.25%;
+
+    &__title {
+        margin-bottom: toRem(18);
+    }
+
+    &__list {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 280px);
+        grid-auto-flow: dense;
+        grid-row-gap: toRem(20);
+        grid-column-gap: toRem(20);
+        margin-bottom: toRem(20);
+    }
+
+    &__item {
+        margin-bottom: toRem(18);
+        position: relative;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@include min-screen(768px) {
+    .service-main {
+        padding: toRem(40) 6.25% ;
+
+        &__title {
+            margin-bottom: toRem(20);
+        }
+
+        &__list {
+            grid-template-columns: repeat(auto-fill, 324px);
+            margin-bottom: toRem(28);
+            justify-content: start;
+            align-items: start;
+        }
+
+        &__item {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@include min-screen(1366px) {
+    .service-main {
+        --width: calc(100% - 1182px);
+        padding: toRem(60) calc(var(--width) / 2);
+
+        &__title {
+            margin-bottom: toRem(40);
+        }
+
+        &__list {
+            grid-template-columns: repeat(auto-fill, 273px);
+            grid-column-gap: toRem(30);
+            grid-row-gap: toRem(30);
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        &__item {
+            margin-bottom: 0;
+        }
+    }
+}

@@ -1,0 +1,215 @@
+include ../helpers/mixins
+block variables
+
+doctype html
+html(lang="ru-RU")
+    head
+        meta(charset="utf-8")
+        title #{title}
+        <!--[if IE]>
+        meta(http-equiv='X-UA-Compatible', content="IE = edge")
+        <![endif]-->
+        meta(name="viewport" content="width=device-width,initial-scale=1")
+        meta(name="keywords" content="")
+        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous")
+        link(rel="stylesheet" type='text/css' href="static/css/styles.css")
+        link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.css")
+        script(src="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.min.js")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet")
+    body.body
+        include ../modules/header/header
+
+        main.main.main--white
+            ul.breadcrumbs
+                +breadcrumbsItem('Главная', 'index.html')
+                +breadcrumbsItem('Каталог', 'category.html')
+                +breadcrumbsItem('Название товара')
+            section.itemcard
+                <!--upper part of itemcard-->
+                .itemcard__info
+                    .itemcard__gallery
+                        button(type="button").thumbs-controls__prev
+                        button(type="button").thumbs-controls__next
+                        <!--Vertical thumbs desktop slider-->
+                        .itemcard__gallery-thumbs.gallery-thumbs
+                            .swiper-wrapper
+                                picture.thumbs-slide.swiper-slide
+                                    source(srcset="static/images/content/thumb-1.webp" type="image/webp")
+                                    img(src="static/images/content/thumb-1.png" width="" height="" alt="").thumbs-slide__image
+                                //- picture.thumbs-slide.swiper-slide
+                                //-     source(srcset="static/images/content/thumb-1.webp" type="image/webp")
+                                //-     img(src="static/images/content/thumb-1.png" width="" height="" alt="").thumbs-slide__image
+                                //- picture.thumbs-slide.swiper-slide
+                                //-     source(srcset="static/images/content/thumb-1.webp" type="image/webp")
+                                //-     img(src="static/images/content/thumb-1.png" width="" height="" alt="").thumbs-slide__image
+                                //- picture.thumbs-slide.swiper-slide
+                                //-     source(srcset="static/images/content/thumb-1.webp" type="image/webp")
+                                //-     img(src="static/images/content/thumb-1.png" width="" height="" alt="").thumbs-slide__image
+                                //- picture.thumbs-slide.swiper-slide
+                                //-     source(srcset="static/images/content/thumb-1.webp" type="image/webp")
+                                //-     img(src="static/images/content/thumb-1.png" width="" height="" alt="").thumbs-slide__image
+                                //- picture.thumbs-slide.swiper-slide
+                                    source(srcset="static/images/content/thumb-1.webp" type="image/webp")
+                                    img(src="static/images/content/thumb-1.png" width="" height="" alt="").thumbs-slide__image
+                        <!--Main single slider-->
+                        .itemcard__gallery-main.gallery-top
+                            .swiper-wrapper
+                                picture.gallery-slide.swiper-slide
+                                    source(srcset="static/images/content/gallery-1.webp" type="image/webp")
+                                    img(src="static/images/content/gallery-1.png" width="" height="" alt="").gallery-slide__image
+                                //- picture.gallery-slide.swiper-slide
+                                //-     source(srcset="static/images/content/gallery-1.webp" type="image/webp")
+                                //-     img(src="static/images/content/gallery-1.png" width="" height="" alt="").gallery-slide__image
+                                //- picture.gallery-slide.swiper-slide
+                                //-     source(srcset="static/images/content/gallery-1.webp" type="image/webp")
+                                //-     img(src="static/images/content/gallery-1.png" width="" height="" alt="").gallery-slide__image
+                                //- picture.gallery-slide.swiper-slide
+                                //-     source(srcset="static/images/content/gallery-1.webp" type="image/webp")
+                                //-     img(src="static/images/content/gallery-1.png" width="" height="" alt="").gallery-slide__image
+                                //- picture.gallery-slide.swiper-slide
+                                //-     source(srcset="static/images/content/gallery-1.webp" type="image/webp")
+                                //-     img(src="static/images/content/gallery-1.png" width="" height="" alt="").gallery-slide__image
+                                //- picture.gallery-slide.swiper-slide
+                                    source(srcset="static/images/content/gallery-1.webp" type="image/webp")
+                                    img(src="static/images/content/gallery-1.png" width="" height="" alt="").gallery-slide__image
+                            .gallery-pagination
+                        <!--Gallery badges-->
+                        .itemcard__gallery-badges.itemcard__gallery-badges--hsn
+                            span.item__badges-sticker.item__badges-sticker--h Хит
+                            span.item__badges-sticker.item__badges-sticker--s Акция
+                            span.item__badges-sticker.item__badges-sticker--n Новинка
+                        span.itemcard__status.inStock В наличии
+                    .itemcard__head
+                        h1.itemcard__name Огнетушитель углекислотный ОУ-5
+                        .itemcard__rating
+                            .itemcard__rating-list.rating.rating--static.--excellent
+                                svg(width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg" data-rating="1").rating__star
+                                    path(d="M8.73044 0.809018L10.3493 5.79134L10.4054 5.96409H10.5871H15.8258L11.5876 9.04333L11.4406 9.15009L11.4967 9.32284L13.1156 14.3052L8.87739 11.2259L8.73044 11.1192L8.5835 11.2259L4.34528 14.3052L5.96413 9.32284L6.02026 9.15009L5.87331 9.04333L1.6351 5.96409H6.87382H7.05546L7.11159 5.79134L8.73044 0.809018Z" stroke="black" stroke-opacity="0.12" stroke-width="0.5" fill="none")
+                                svg(width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg" data-rating="2").rating__star
+                                    path(d="M8.73044 0.809018L10.3493 5.79134L10.4054 5.96409H10.5871H15.8258L11.5876 9.04333L11.4406 9.15009L11.4967 9.32284L13.1156 14.3052L8.87739 11.2259L8.73044 11.1192L8.5835 11.2259L4.34528 14.3052L5.96413 9.32284L6.02026 9.15009L5.87331 9.04333L1.6351 5.96409H6.87382H7.05546L7.11159 5.79134L8.73044 0.809018Z" stroke="black" stroke-opacity="0.12" stroke-width="0.5" fill="none")
+                                svg(width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg" data-rating="3").rating__star
+                                    path(d="M8.73044 0.809018L10.3493 5.79134L10.4054 5.96409H10.5871H15.8258L11.5876 9.04333L11.4406 9.15009L11.4967 9.32284L13.1156 14.3052L8.87739 11.2259L8.73044 11.1192L8.5835 11.2259L4.34528 14.3052L5.96413 9.32284L6.02026 9.15009L5.87331 9.04333L1.6351 5.96409H6.87382H7.05546L7.11159 5.79134L8.73044 0.809018Z" stroke="black" stroke-opacity="0.12" stroke-width="0.5" fill="none")
+                                svg(width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg" data-rating="4").rating__star
+                                    path(d="M8.73044 0.809018L10.3493 5.79134L10.4054 5.96409H10.5871H15.8258L11.5876 9.04333L11.4406 9.15009L11.4967 9.32284L13.1156 14.3052L8.87739 11.2259L8.73044 11.1192L8.5835 11.2259L4.34528 14.3052L5.96413 9.32284L6.02026 9.15009L5.87331 9.04333L1.6351 5.96409H6.87382H7.05546L7.11159 5.79134L8.73044 0.809018Z" stroke="black" stroke-opacity="0.12" stroke-width="0.5" fill="none")
+                                svg(width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg" data-rating="5").rating__star
+                                    path(d="M8.73044 0.809018L10.3493 5.79134L10.4054 5.96409H10.5871H15.8258L11.5876 9.04333L11.4406 9.15009L11.4967 9.32284L13.1156 14.3052L8.87739 11.2259L8.73044 11.1192L8.5835 11.2259L4.34528 14.3052L5.96413 9.32284L6.02026 9.15009L5.87331 9.04333L1.6351 5.96409H6.87382H7.05546L7.11159 5.79134L8.73044 0.809018Z" stroke="black" stroke-opacity="0.12" stroke-width="0.5" fill="none")
+                            span.itemcard__rating-count (2)
+                        span.itemcard__artikul Артикул: 152-456
+                    <!--Itemcard specifications-->
+                    p.itemcard__description Переносные порошковые огнетушители ОП-1 используют для тушения твердых веществ, жидкостей и газов, а также электроустановок под напряжением. Переносные порошковые огнетушители ОП-1 используют для тушения твердых веществ, жидкостей и газов, а также электроустановок под напряжением.
+                    <!--Itemcard bottom part-->
+                    .itemcard__bottom
+                        .itemcard__price
+                            span.itemcard__price-nr.itemcard__price-nr--current 3000 р
+                            span.itemcard__price-nr.itemcard__price-nr--old 4500 р
+                        .itemcard__counter
+                            input(value="1").itemcard__counter-input
+                            .itemcard__counter-wrap
+                                button.itemcard__counter-btn(data-direction="plus") +
+                                button.itemcard__counter-btn(data-direction="minus") -
+                        .itemcard__controls
+                            button(type="button").itemcard__controls-btn.itemcard__controls-btn--buy.js-instant-buy Купить сейчас
+                            button(type="button").itemcard__controls-btn.itemcard__controls-btn--cart 
+                                span.itemcard__controls-icon
+                                span В корзину
+                <!--Bottom part with all details-->
+                .itemcard__details
+                    ul.itemcard__nav
+                        li(data-tab-name="tab-1").itemcard__nav-item.is-active
+                            span Инфо
+                        li(data-tab-name="tab-2").itemcard__nav-item
+                            span Отзывы
+                            span#reviewsCounter (2)
+                        li(data-tab-name="tab-3").itemcard__nav-item 
+                            span Характеристики
+                        li(data-tab-name="tab-4").itemcard__nav-item
+                            span Видео
+                        li(data-tab-name="tab-5").itemcard__nav-item
+                            span Документы
+                    .itemcard__content
+                        .itemcard__content-item.tab-1.is-active
+                            .itemcard__content-wrap.tab-content
+                                h2.tab-content__title Информация
+                                p.tab-content__description Переносные порошковые огнетушители ОП-1 используют для тушения твердых веществ, жидкостей и газов, а также электроустановок под напряжением.
+                                ul.tab-content__list
+                                    li.tab-content__list-item
+                                        p.tab-content__description для тушения загораний
+                                    li.tab-content__list-item
+                                        p.tab-content__description для тушения загораний
+                                    li.tab-content__list-item
+                                        p.tab-content__description для тушения загораний
+                        .itemcard__content-item.tab-2
+                            .itemcard__content-wrap.tab-content
+                                h2.tab-content__title Отзывы о товаре
+                                ul.tab-content__reviews
+                                    +reviewItem('ВВ', 'Василий Васильев', 'Идейные соображения высшего порядка, а также консультация с широким активом в значительной степени', '31.08.2022', '31-08-2022', '--good')
+                                    +reviewItem('ВВ', 'Василий Васильев', 'Идейные соображения высшего порядка, а также консультация с широким активом в значительной степени', '31.08.2022', '31-08-2022', '--bad')
+                                    +reviewItem('ВВ', 'Василий Васильев', 'Идейные соображения высшего порядка, а также консультация с широким активом в значительной степени', '31.08.2022', '31-08-2022', '--excellent')
+                                .tab-content__controls
+                                    button(type="button").tab-content__controls-btn.js-expand Посмотреть все отзывы
+                                    button(type="button").tab-content__controls-btn.js-add-review Оставить отзыв
+                                include ../modules/blocks/popup-review
+                        .itemcard__content-item.tab-3
+                            .itemcard__content-wrap.tab-content
+                                h2.tab-content__title Характеристики:
+                                .tab-content__tablewrap
+                                    .tab-content__table(data-simplebar data-simplebar-auto-hide="false")
+                                        table.table
+                                            tbody
+                                                tr
+                                                    td(colspan="3").table__cell.table__cell--title Основные характеристики
+                                                tr
+                                                    td.table__cell Условный проход
+                                                    td.table__cell 50 мм
+                                                tr
+                                                    td.table__cell Внутренний диаметр
+                                                    td.table__cell 51 мм
+                                                tr
+                                                    td.table__cell Величина отсрочки
+                                                    td.table__cell Фиксированный
+                                                tr
+                                                    td.table__cell.table__cell--title Дополнительные характеристики
+                                                    td.table__cell.table__cell--title Очень важные
+                                                    td.table__cell.table__cell--title Не очень важные
+                                                tr
+                                                    td.table__cell.table__cell--first Что-то очень важное вообще
+                                                    td.table__cell Вообще совсем
+                                                    td.table__cell Ни о чем
+                        .itemcard__content-item.tab-4
+                            .itemcard__content-wrap.tab-content
+                                h2.tab-content__title Видео
+                                .tab-content__video
+                                    iframe(class="tab-content__player" src="https://www.youtube.com/embed/dd8HUX7HdOE" title="video-name" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
+                        .itemcard__content-item.tab-5
+                            .itemcard__content-wrap.tab-content
+                                h2.tab-content__title Документы
+                                ul.tab-content__document
+                                    li.tab-content__document-item
+                                        picture.tab-content__frame
+                                        source(srcset="static/images/content/sert-1.webp" type="image/webp")
+                                        img(src="static/images/content/sert-1.png" width="" height="" alt="").tab-content__frame-img
+                                    li.tab-content__document-item
+                                        picture.tab-content__frame
+                                        source(srcset="static/images/content/sert-1.webp" type="image/webp")
+                                        img(src="static/images/content/sert-1.png" width="" height="" alt="").tab-content__frame-img
+                                    li.tab-content__document-item
+                                        picture.tab-content__frame
+                                        source(srcset="static/images/content/sert-1.webp" type="image/webp")
+                                        img(src="static/images/content/sert-1.png" width="" height="" alt="").tab-content__frame-img
+            include ../modules/blocks/text-block
+            include ../modules/blocks/offers
+        include ../modules/footer/footer
+        include ../modules/popup/cat-popup
+        include ../modules/blocks/popup-callback
+        include ../modules/blocks/popup-reaction
+        include ../modules/blocks/popup-fast
+        include ../modules/blocks/popup-claim
+        //script(src="static/js/vendor/jquery-3.3.1.min.js")
+        script(src="static/js/main.js")
+        script(src="static/js/libs.js")
+        script(src="static/js/main-slider.js")
+        script(src="static/js/counter.js")
+        script(src="static/js/tabs.js")
+        block script
